@@ -7,8 +7,9 @@ class ScreenFetcher
     "Windows Input Experience",
     "Windows Shell Experience Host",
     "Settings",
+    "Setup",
     "Program Manager",
-  };
+  }.Select(x => x.ToLower()).ToList();
 
   public delegate bool Win32Callback(IntPtr hwnd, IntPtr lParam);
 
@@ -56,7 +57,7 @@ class ScreenFetcher
     StringBuilder sb = new StringBuilder(GetWindowTextLength(hWnd) + 1);
     GetWindowText(hWnd, sb, sb.Capacity);
     windowData.Title = sb.ToString();
-    if (windowData.Title.Length == 0 || _screenNamesToIgnore.Contains(windowData.Title))
+    if (windowData.Title.Length == 0 || _screenNamesToIgnore.Contains(windowData.Title.ToLower()))
       return null;
 
     Rectangle rect;

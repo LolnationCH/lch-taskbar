@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using System.Text;
 
 public class ProgramWindowData
 {
@@ -25,6 +26,8 @@ public class ProgramWindowData
   [DllImport("user32.dll")]
   [return: MarshalAs(UnmanagedType.Bool)]
   static extern bool GetWindowRect(HandleRef hWnd, out Rectangle lpRect);
+  [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+  static extern uint GetWindowModuleFileName(IntPtr hwnd, StringBuilder lpszFileName, uint cchFileNameMax);
 
   public void ResetPosition()
   {
@@ -40,6 +43,14 @@ public class ProgramWindowData
   {
     ResetPosition();
     SetWindowPos(Handle, IntPtr.Zero, x, y, width, height, 0x0040);
+  }
+
+  public void GetExecutable()
+  {
+    StringBuilder sb = new StringBuilder(1024);
+    GetWindowModuleFileName(Handle, sb, (uint)sb.Capacity);
+    Title = sb.ToString();
+    Console.WriteLine(Title.ToString());
   }
 
   public void SetPlacement(WINDOWPLACEMENT placement)

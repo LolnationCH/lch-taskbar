@@ -45,5 +45,19 @@ public class ScreenData
       _containers[_currentContainerIndex].AddWindow(window);
   }
 
+  public void SwitchContainer(bool next = true)
+  {
+    if (_containers.Count == 0)
+      return;
+
+    if (next)
+      _currentContainerIndex++;
+    else
+      _currentContainerIndex--;
+    if (_currentContainerIndex >= _containers.Count)
+      _currentContainerIndex = 0;
+
+    _containers[_currentContainerIndex].ShowContainer();
+  }
 
 }

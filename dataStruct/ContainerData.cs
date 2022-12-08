@@ -8,6 +8,8 @@ public class ContainerData
   public int width;
   public int height;
 
+  public bool isActive = false;
+
   private List<Zone> _zones = new();
 
   public void AddWindow(ProgramWindowData window)
@@ -15,18 +17,30 @@ public class ContainerData
     _windows.Add(window);
   }
 
-  public void OrganizeWindows()
+  public void RemoveWindow(ProgramWindowData window)
   {
-    _zones = ZoneCalculator.CalculateZones(this.x, this.y, this.width, this.height, _windows.Count);
+    _windows.Remove(window);
+  }
+
+  public void ShowContainer()
+  {
+    isActive = true;
+    Console.WriteLine($"Container: {Title} - {x} - {y} - {width} - {height}");
+    RenderContainer();
+  }
+
+  public void RenderContainer()
+  {
+    if (_zones.Count == 0 || _zones.Count != _windows.Count)
+      _zones = ZoneCalculator.CalculateZones(this.x, this.y, this.width, this.height, _windows.Count).ToList();
+
     Console.WriteLine(String.Join(Environment.NewLine, _zones));
 
     for (var i = 0; i < _windows.Count; i++)
     {
-      _windows[i].ResetPosition();
-      _windows[i].SetPosition(_zones[i].x,
-                                     _zones[i].y,
-                                 _zones[i].width,
-                                _zones[i].height);
+      var zone = _zones[i];
+      zone.window = _windows[i];
+      _zones[i].ShowWindowInZone();
     }
   }
 }
