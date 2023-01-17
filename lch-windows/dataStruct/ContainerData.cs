@@ -25,7 +25,6 @@ public class ContainerData
   public void ShowContainer()
   {
     isActive = true;
-    Console.WriteLine($"Container: {Title} - {x} - {y} - {width} - {height}");
     RenderContainer();
   }
 
@@ -34,13 +33,16 @@ public class ContainerData
     if (_zones.Count == 0 || _zones.Count != _windows.Count)
       _zones = ZoneCalculator.CalculateZones(this.x, this.y, this.width, this.height, _windows.Count).ToList();
 
-    Console.WriteLine(String.Join(Environment.NewLine, _zones));
-
-    for (var i = 0; i < _windows.Count; i++)
+    for (var i = 0; i < _zones.Count; i++)
     {
       var zone = _zones[i];
       zone.window = _windows[i];
       _zones[i].ShowWindowInZone();
     }
+  }
+
+  public Zone? FindActiveZone(IntPtr handle)
+  {
+    return _zones.FirstOrDefault(z => z.window != null && z.window.Handle == handle);
   }
 }

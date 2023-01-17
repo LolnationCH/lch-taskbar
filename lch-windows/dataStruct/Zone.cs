@@ -25,28 +25,27 @@ public class Zone
     if (window == null)
       return;
 
-    window.GetExecutable();
     window.ResetPosition();
     window.SetPosition(x, y, width, height);
   }
 
-  public void ExpandLeft(int amount)
+  public void MoveLeft(int amount)
+  {
+    Expand(amount * -1, 0, 0, 0);
+  }
+
+  public void MoveRight(int amount)
   {
     Expand(amount, 0, 0, 0);
   }
 
-  public void ExpandRight(int amount)
+  public void MoveUp(int amount)
   {
-    Expand(0, 0, amount, 0);
+    Expand(0, amount * -1, 0, 0);
   }
 
-  public void ExpandUp(int amount)
+  public void MoveDown(int amount)
   {
     Expand(0, amount, 0, 0);
-  }
-
-  public void ExpandDown(int amount)
-  {
-    Expand(0, 0, 0, amount);
   }
 }

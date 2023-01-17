@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lch-keyboard-handler", "lch-keyboard-handler\lch-keyboard-handler.csproj", "{E6858F83-29B1-488C-BD0E-85CC3C0682FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lch-window", "lch-windows\lch-window.csproj", "{ED1BC877-945A-47AF-9033-FE00CC11006F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6858F83-29B1-488C-BD0E-85CC3C0682FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6858F83-29B1-488C-BD0E-85CC3C0682FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6858F83-29B1-488C-BD0E-85CC3C0682FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6858F83-29B1-488C-BD0E-85CC3C0682FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1BC877-945A-47AF-9033-FE00CC11006F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1BC877-945A-47AF-9033-FE00CC11006F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1BC877-945A-47AF-9033-FE00CC11006F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1BC877-945A-47AF-9033-FE00CC11006F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

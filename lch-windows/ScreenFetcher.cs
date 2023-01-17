@@ -47,10 +47,10 @@ class ScreenFetcher
     return dsProcRootWindows;
   }
 
-  private ProgramWindowData? GetWindowData(IntPtr hWnd, List<ScreenData> screens)
+  private void GetWindowData(IntPtr hWnd, List<ScreenData> screens)
   {
     if (!IsWindowVisible(hWnd))
-      return null;
+      return;
 
     ProgramWindowData windowData = new ProgramWindowData();
     windowData.Handle = hWnd;
@@ -58,7 +58,7 @@ class ScreenFetcher
     GetWindowText(hWnd, sb, sb.Capacity);
     windowData.Title = sb.ToString();
     if (windowData.Title.Length == 0 || _screenNamesToIgnore.Contains(windowData.Title.ToLower()))
-      return null;
+      return;
 
     Rectangle rect;
     GetWindowRect(new HandleRef(null, hWnd), out rect);
@@ -66,8 +66,6 @@ class ScreenFetcher
 
     var screen = System.Windows.Forms.Screen.FromHandle(hWnd);
     screens.Where(s => s.DeviceName == screen.DeviceName).FirstOrDefault()?.AddWindow(windowData);
-
-    return windowData;
   }
 
   public List<ScreenData> GetAllWindowsInScreens()
@@ -81,14 +79,11 @@ class ScreenFetcher
       Primary = x.Primary,
     }).ToList();
 
-    List<ProgramWindowData> dsProcRootWindows = new();
     foreach (IntPtr hWnd in rootWindows)
     {
       uint lpdwProcessId;
       GetWindowThreadProcessId(hWnd, out lpdwProcessId);
-      var windowData = GetWindowData(hWnd, screens);
-      if (windowData != null)
-        dsProcRootWindows.Add(windowData);
+      GetWindowData(hWnd, screens);
     }
     return screens;
   }

@@ -60,4 +60,14 @@ public class ScreenData
     _containers[_currentContainerIndex].ShowContainer();
   }
 
+  public void RenderScreen()
+  {
+    _containers[_currentContainerIndex].RenderContainer();
+  }
+
+  public Zone? FindActiveZone(IntPtr handle)
+  {
+    return _containers[_currentContainerIndex].FindActiveZone(handle);
+  }
+
 }
