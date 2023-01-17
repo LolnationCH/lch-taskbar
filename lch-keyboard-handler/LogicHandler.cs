@@ -40,6 +40,14 @@ static class LogicHandler
     if (!HasHyperKeyPressed(keyCombination))
       return false;
 
+    // handle key combination
+    // If users press 'h' key, toggle taskbar
+    if (keyCombination[Keys.H])
+    {
+      Taskbar.Toggle();
+      return true;
+    }
+
     return false;
   }
 }

@@ -9,4 +9,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\lch-taskbar\lch-taskbar.csproj" />
+  </ItemGroup>
+
 </Project>
