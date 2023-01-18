@@ -44,7 +44,8 @@ static class LogicHandler
     // If users press 'h' key, toggle taskbar
     if (keyCombination[Keys.H])
     {
-      Taskbar.Toggle();
+      WindowsTaskbar.Toggle();
+      LCHTaskbarHandler.Toggle();
       return true;
     }
 

@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-public static class Taskbar
+public static class WindowsTaskbar
 {
   [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
   private static extern IntPtr FindWindow(
