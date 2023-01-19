@@ -1,1 +1,0 @@
-﻿InterceptKeys.InitHook();

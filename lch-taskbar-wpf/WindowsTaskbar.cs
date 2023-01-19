@@ -27,7 +27,7 @@ public static class WindowsTaskbar
 
   private const string taskbarClassName = "Shell_TrayWnd";
 
-  private static bool _isHidden = false;
+  private static bool _isHidden = true;
 
   public static void Show()
   {

@@ -1,14 +1,15 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-class ScreenFetcher
+public static class ScreenFetcher
 {
-  private readonly List<string> _screenNamesToIgnore = new List<string>(){
+  private static readonly List<string> _programNamesToIgnore = new List<string>(){
     "Windows Input Experience",
     "Windows Shell Experience Host",
     "Settings",
     "Setup",
     "Program Manager",
+    "Taskbar",
   }.Select(x => x.ToLower()).ToList();
 
   public delegate bool Win32Callback(IntPtr hwnd, IntPtr lParam);
@@ -33,7 +34,7 @@ class ScreenFetcher
   static extern bool GetWindowRect(HandleRef hWnd, out Rectangle lpRect);
 
 
-  public List<IntPtr> GetRootWindowsOfProcess(int pid)
+  public static List<IntPtr> GetRootWindowsOfProcess(int pid)
   {
     List<IntPtr> rootWindows = GetChildWindows(IntPtr.Zero);
     List<IntPtr> dsProcRootWindows = new List<IntPtr>();
@@ -47,7 +48,22 @@ class ScreenFetcher
     return dsProcRootWindows;
   }
 
-  private void GetWindowData(IntPtr hWnd, List<ScreenData> screens)
+  public static string GetWindowTitle(IntPtr hWnd)
+  {
+    StringBuilder sb = new StringBuilder(GetWindowTextLength(hWnd) + 1);
+    GetWindowText(hWnd, sb, sb.Capacity);
+    return sb.ToString();
+  }
+
+  private static bool IgnoreProgram(IntPtr hWnd)
+  {
+    var Title = GetWindowTitle(hWnd);
+    if (Title.Length == 0 || _programNamesToIgnore.Contains(Title.ToLower()))
+      return true;
+    return false;
+  }
+
+  private static void GetWindowData(IntPtr hWnd, List<ScreenData> screens)
   {
     if (!IsWindowVisible(hWnd))
       return;
@@ -57,7 +73,7 @@ class ScreenFetcher
     StringBuilder sb = new StringBuilder(GetWindowTextLength(hWnd) + 1);
     GetWindowText(hWnd, sb, sb.Capacity);
     windowData.Title = sb.ToString();
-    if (windowData.Title.Length == 0 || _screenNamesToIgnore.Contains(windowData.Title.ToLower()))
+    if (windowData.Title.Length == 0 || _programNamesToIgnore.Contains(windowData.Title.ToLower()))
       return;
 
     Rectangle rect;
@@ -68,7 +84,13 @@ class ScreenFetcher
     screens.Where(s => s.DeviceName == screen.DeviceName).FirstOrDefault()?.AddWindow(windowData);
   }
 
-  public List<ScreenData> GetAllWindowsInScreens()
+  public static List<IntPtr> GetProcessHandle()
+  {
+    return GetChildWindows(IntPtr.Zero).Where(x => !IgnoreProgram(x))
+                                       .ToList();
+  }
+
+  public static List<ScreenData> GetAllWindowsInScreens()
   {
     List<IntPtr> rootWindows = GetChildWindows(IntPtr.Zero);
     List<ScreenData> screens = System.Windows.Forms.Screen.AllScreens.Select(x => new ScreenData()

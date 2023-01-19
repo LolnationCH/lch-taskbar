@@ -1,0 +1,28 @@
+﻿<Window x:Class="lch_taskbar_wpf.LCHTaskbar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lch_taskbar_wpf"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="taskbar" Height="22"
+        WindowStartupLocation="Manual" 
+        Topmost="True"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Left="0" Top="0">
+    <Grid>
+      <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="200"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="200"/>
+      </Grid.ColumnDefinitions>
+      <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0"/>
+      <Label x:Name="MiddleContent" Foreground="White"  Grid.Column="1" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10"/>
+      <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+          <Button Name="CurrentTime" Foreground="White" FontSize="10" Click="CurrentTime_Click" BorderThickness="0" Background="Transparent"/>
+      </StackPanel>
+  </Grid>
+</Window>

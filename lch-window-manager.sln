@@ -3,26 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lch-keyboard-handler", "lch-keyboard-handler\lch-keyboard-handler.csproj", "{E6858F83-29B1-488C-BD0E-85CC3C0682FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lch-window", "lch-windows\lch-window.csproj", "{ED1BC877-945A-47AF-9033-FE00CC11006F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lch-window", "lch-windows\lch-window.csproj", "{ED1BC877-945A-47AF-9033-FE00CC11006F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lch-taskbar-wpf", "lch-taskbar-wpf\lch-taskbar-wpf.csproj", "{D99135D4-21E6-4ACD-B35F-C37E1C9F8CBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E6858F83-29B1-488C-BD0E-85CC3C0682FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6858F83-29B1-488C-BD0E-85CC3C0682FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6858F83-29B1-488C-BD0E-85CC3C0682FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6858F83-29B1-488C-BD0E-85CC3C0682FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED1BC877-945A-47AF-9033-FE00CC11006F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED1BC877-945A-47AF-9033-FE00CC11006F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED1BC877-945A-47AF-9033-FE00CC11006F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED1BC877-945A-47AF-9033-FE00CC11006F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D99135D4-21E6-4ACD-B35F-C37E1C9F8CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D99135D4-21E6-4ACD-B35F-C37E1C9F8CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D99135D4-21E6-4ACD-B35F-C37E1C9F8CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D99135D4-21E6-4ACD-B35F-C37E1C9F8CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BD8ABFB-37E6-4734-B976-84C8F0D15B66}
 	EndGlobalSection
 EndGlobal
