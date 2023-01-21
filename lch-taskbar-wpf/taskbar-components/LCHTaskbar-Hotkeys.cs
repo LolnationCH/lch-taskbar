@@ -1,30 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Interop;
 
 namespace lch_taskbar_wpf
 {
   public partial class LCHTaskbar : System.Windows.Window
   {
-    private void Toggle()
-    {
-      if (this.IsVisible)
-        this.Hide();
-      else
-        this.Show();
-      WindowsTaskbar.Toggle();
-    }
-    protected override void OnClosing(CancelEventArgs e)
-    {
-      WindowsTaskbar.Show();
-      base.OnClosing(e);
-    }
-
     protected override void OnSourceInitialized(EventArgs e)
     {
       base.OnSourceInitialized(e);
@@ -34,6 +14,8 @@ namespace lch_taskbar_wpf
       source.AddHook(HwndHook);
 
       RegisterHotkeys(handle);
+
+      WindowUtils.RemoveFromAltTab(handle);
     }
 
     private void RegisterHotkeys(IntPtr handle)
@@ -68,7 +50,7 @@ namespace lch_taskbar_wpf
               }
               else if (vkey >= (uint)GlobalHotkeys.VK.KEY_0 && vkey <= (uint)GlobalHotkeys.VK.KEY_9)
               {
-                LaunchProcessByIndex((int)(vkey - (uint)GlobalHotkeys.VK.KEY_0) - 1);
+                ProcessSP.LaunchProcessByIndex((int)(vkey - (uint)GlobalHotkeys.VK.KEY_0) - 1);
               }
               handled = true;
               break;

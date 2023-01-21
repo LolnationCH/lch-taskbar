@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace lch_taskbar_wpf
+namespace lch_taskbar_wpf.taskbar_components
 {
-  public partial class LCHTaskbar : System.Windows.Window
-  {
+  /// <summary>
+  /// Interaction logic for TimeControl.xaml
+  /// </summary>
+  public partial class TimeControl : System.Windows.Controls.Button
+    {
+    private bool showTime = true;
+    
+    public TimeControl()
+    {
+      InitializeComponent();
+      SetupCurrentTimeLabel();
+    }
 
     private void SetupCurrentTimeLabel()
     {
@@ -17,13 +23,12 @@ namespace lch_taskbar_wpf
       LiveTime.Tick += currentTime_Tick;
       LiveTime.Start();
     }
-
     private void currentTime_Tick(object? sender, EventArgs e)
     {
       if (showTime)
-        CurrentTime.Content = DateTime.Now.ToString("HH:mm:ss");
+        Content = DateTime.Now.ToString("HH:mm:ss");
       else
-        CurrentTime.Content = DateTime.Now.ToString("dd/MM/yyyy");
+        Content = DateTime.Now.ToString("dd/MM/yyyy");
     }
 
     private void CurrentTime_Click(object sender, System.Windows.RoutedEventArgs e)

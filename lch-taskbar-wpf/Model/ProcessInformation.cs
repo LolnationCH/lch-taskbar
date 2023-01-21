@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace lch_taskbar_wpf
+﻿namespace lch_taskbar_wpf
 {
   public class ProcessInformation
   {

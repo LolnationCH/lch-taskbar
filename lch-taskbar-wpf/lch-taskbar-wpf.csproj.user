@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="taskbar-components\ProcessControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="taskbar-components\TimeControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="taskbar-components\WeatherControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="taskbar-components\ProcessControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="taskbar-components\TimeControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="taskbar-components\WeatherControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -4,14 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lch_taskbar_wpf"
+        xmlns:cc="clr-namespace:lch_taskbar_wpf.taskbar_components"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
         Title="taskbar" Height="22"
         WindowStartupLocation="Manual" 
+        ShowInTaskbar="False"
         Topmost="True"
         Background="Transparent"
         AllowsTransparency="True"
+        d:Width="400"
         Left="0" Top="0">
     <Grid>
       <Grid.ColumnDefinitions>
@@ -19,10 +22,17 @@
           <ColumnDefinition Width="*"/>
           <ColumnDefinition Width="200"/>
       </Grid.ColumnDefinitions>
-      <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0"/>
-      <Label x:Name="MiddleContent" Foreground="White"  Grid.Column="1" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10"/>
-      <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-          <Button Name="CurrentTime" Foreground="White" FontSize="10" Click="CurrentTime_Click" BorderThickness="0" Background="Transparent"/>
-      </StackPanel>
+    <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0">
+      <cc:ProcessControl x:Name="ProcessSP"/>
+      <cc:WeatherControl Margin="0,3,0,0" Padding="0,0,0,0"/>
+    </StackPanel>
+    <Label x:Name="MiddleContent" Foreground="White" 
+           Grid.Column="1" Content="" 
+           HorizontalAlignment="Center" VerticalAlignment="Top" 
+           FontSize="10" 
+           Margin="0,3,0,0" Padding="0,0,0,0"/>
+    <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+      <cc:TimeControl Margin="0,4,0,0" Padding="0,-10,0,0"/>
+    </StackPanel>
   </Grid>
 </Window>
