@@ -11,7 +11,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="TaskbarComponents\Spotify_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\lch-windows\lch-window.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Ressources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="TaskbarComponents\Spotify_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Ressources\Spotify_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

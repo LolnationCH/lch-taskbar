@@ -1,6 +1,6 @@
 ﻿using System.Windows.Threading;
 
-namespace lch_taskbar_wpf.taskbar_components
+namespace lch_taskbar_wpf.TaskbarComponents
 {
   /// <summary>
   /// Interaction logic for WeatherControl.xaml

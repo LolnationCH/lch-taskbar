@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace lch_taskbar_wpf.taskbar_components
+namespace lch_taskbar_wpf.TaskbarComponents
 {
   /// <summary>
   /// Interaction logic for ProcessControl.xaml

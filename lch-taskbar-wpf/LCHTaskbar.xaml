@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lch_taskbar_wpf"
-        xmlns:cc="clr-namespace:lch_taskbar_wpf.taskbar_components"
+        xmlns:cc="clr-namespace:lch_taskbar_wpf.TaskbarComponents"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -14,17 +14,18 @@
         Topmost="True"
         Background="Transparent"
         AllowsTransparency="True"
-        d:Width="400"
+        d:Width="1900"
         Left="0" Top="0">
     <Grid>
       <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="200"/>
           <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="2*"/>
           <ColumnDefinition Width="200"/>
       </Grid.ColumnDefinitions>
     <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0">
       <cc:ProcessControl x:Name="ProcessSP"/>
       <cc:WeatherControl Margin="0,3,0,0" Padding="0,0,0,0"/>
+      <cc:SpotifyControl/>
     </StackPanel>
     <Label x:Name="MiddleContent" Foreground="White" 
            Grid.Column="1" Content="" 

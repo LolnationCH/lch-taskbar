@@ -2,24 +2,30 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="taskbar-components\ProcessControl.xaml.cs">
+    <Compile Update="TaskbarComponents\ProcessControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="taskbar-components\TimeControl.xaml.cs">
+    <Compile Update="TaskbarComponents\SpotifyControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="taskbar-components\WeatherControl.xaml.cs">
+    <Compile Update="TaskbarComponents\TimeControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TaskbarComponents\WeatherControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="taskbar-components\ProcessControl.xaml">
+    <Page Update="TaskbarComponents\ProcessControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="taskbar-components\TimeControl.xaml">
+    <Page Update="TaskbarComponents\SpotifyControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="taskbar-components\WeatherControl.xaml">
+    <Page Update="TaskbarComponents\TimeControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaskbarComponents\WeatherControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
