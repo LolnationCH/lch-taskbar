@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.VisualBasic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Automation;
 using System.Windows.Interop;
 using System.Windows.Threading;
@@ -21,42 +23,19 @@ namespace lch_taskbar_wpf
     {
       WindowsTaskbar.Hide();
       SetTaskbarToMonitorSize();
-
-      // AutomationFocusChangedEventHandler focusHandler = OnFocusChanged;
-      // Automation.AddAutomationFocusChangedEventHandler(focusHandler);
     }
-    
+
     private void SetTaskbarToMonitorSize()
     {
       Width = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds.Width;
     }
     
-    public void OnFocusChanged(object sender, AutomationFocusChangedEventArgs e)
+    public void Refresh(string title)
     {
       ProcessSP.Refresh();
-
-      AutomationElement? focusedElement = sender as AutomationElement;
-      if (focusedElement != null)
-      {
-        try
-        {
-          int processId = focusedElement.Current.ProcessId;
-          var currentProcess = Process.GetCurrentProcess();
-          if (processId == currentProcess.Id)
-            return;
-
-          using (Process process = Process.GetProcessById(processId))
-          {
-            SetCurrentProcessTitle(process.MainWindowTitle);
-          }
-        }
-        catch (Exception)
-        {
-          // ignored
-        }
-      }
+      SetCurrentProcessTitle(title);
     }
-    private void SetCurrentProcessTitle(string title)
+    public void SetCurrentProcessTitle(string title)
     {
       Dispatcher.Invoke(() =>
       {

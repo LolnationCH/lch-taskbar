@@ -18,8 +18,8 @@
         Left="0" Top="0">
     <Grid>
       <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="300"/>
           <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="2*"/>
           <ColumnDefinition Width="200"/>
       </Grid.ColumnDefinitions>
     <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0">
@@ -31,7 +31,7 @@
            Grid.Column="1" Content="" 
            HorizontalAlignment="Center" VerticalAlignment="Top" 
            FontSize="10" 
-           Margin="0,3,0,0" Padding="0,0,0,0"/>
+           Margin="-150,3,0,0" Padding="0,0,0,0"/>
     <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
       <cc:TimeControl Margin="0,4,0,0" Padding="0,-10,0,0"/>
     </StackPanel>
