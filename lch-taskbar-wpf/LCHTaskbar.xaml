@@ -16,12 +16,12 @@
         AllowsTransparency="True"
         d:Width="1900"
         Left="0" Top="0">
-    <Grid>
-      <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="300"/>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="200"/>
-      </Grid.ColumnDefinitions>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition x:Name="Column1" Width="300"/>
+      <ColumnDefinition x:Name="Column2" Width="*"/>
+      <ColumnDefinition x:Name="Column3" Width="200"/>
+    </Grid.ColumnDefinitions>
     <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0">
       <cc:ProcessControl x:Name="ProcessSP"/>
       <cc:WeatherControl Margin="0,3,0,0" Padding="0,0,0,0"/>

@@ -1,8 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Windows.Automation;
+﻿using System.ComponentModel;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
@@ -28,6 +24,9 @@ namespace lch_taskbar_wpf
     private void SetTaskbarToMonitorSize()
     {
       Width = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds.Width;
+      var widthColumn = Width / 3;
+      Column1.Width = new System.Windows.GridLength(widthColumn);
+      Column3.Width = new System.Windows.GridLength(widthColumn);
     }
     
     public void Refresh(string title)

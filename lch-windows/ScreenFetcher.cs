@@ -89,7 +89,7 @@ public static class ScreenFetcher
     return GetChildWindows(IntPtr.Zero).Where(x => !IgnoreProgram(x))
                                        .ToList();
   }
-
+  
   public static List<ScreenData> GetAllWindowsInScreens()
   {
     List<IntPtr> rootWindows = GetChildWindows(IntPtr.Zero);
