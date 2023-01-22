@@ -25,15 +25,16 @@
     <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0">
       <cc:ProcessControl x:Name="ProcessSP"/>
       <cc:WeatherControl Margin="0,3,0,0" Padding="0,0,0,0"/>
-      <cc:SpotifyControl/>
+      <cc:SpotifyControl Margin="0,-1,5,0" Padding="0,0,0,0"/>
     </StackPanel>
     <Label x:Name="MiddleContent" Foreground="White" 
-           Grid.Column="1" Content="" 
+           Grid.Column="1" Content="Initializing..." 
            HorizontalAlignment="Center" VerticalAlignment="Top" 
            FontSize="10" 
            Margin="-150,3,0,0" Padding="0,0,0,0"/>
     <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-      <cc:TimeControl Margin="0,4,0,0" Padding="0,-10,0,0"/>
+      <cc:TimeControl Margin="0,-2,5,0" Padding="0,0,0,0"/>
+      <cc:NetworkControl Margin="0,0,0,2"/>
     </StackPanel>
   </Grid>
 </Window>

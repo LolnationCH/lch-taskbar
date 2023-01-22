@@ -37,7 +37,7 @@ public static class ScreenFetcher
   public static List<IntPtr> GetRootWindowsOfProcess(int pid)
   {
     List<IntPtr> rootWindows = GetChildWindows(IntPtr.Zero);
-    List<IntPtr> dsProcRootWindows = new List<IntPtr>();
+    List<IntPtr> dsProcRootWindows = new();
     foreach (IntPtr hWnd in rootWindows)
     {
       uint lpdwProcessId;
@@ -50,7 +50,7 @@ public static class ScreenFetcher
 
   public static string GetWindowTitle(IntPtr hWnd)
   {
-    StringBuilder sb = new StringBuilder(GetWindowTextLength(hWnd) + 1);
+    StringBuilder sb = new(GetWindowTextLength(hWnd) + 1);
     GetWindowText(hWnd, sb, sb.Capacity);
     return sb.ToString();
   }
@@ -68,11 +68,9 @@ public static class ScreenFetcher
     if (!IsWindowVisible(hWnd))
       return;
 
-    ProgramWindowData windowData = new ProgramWindowData();
+    ProgramWindowData windowData = new();
     windowData.Handle = hWnd;
-    StringBuilder sb = new StringBuilder(GetWindowTextLength(hWnd) + 1);
-    GetWindowText(hWnd, sb, sb.Capacity);
-    windowData.Title = sb.ToString();
+    windowData.Title = GetWindowTitle(hWnd);
     if (windowData.Title.Length == 0 || _programNamesToIgnore.Contains(windowData.Title.ToLower()))
       return;
 
@@ -112,11 +110,11 @@ public static class ScreenFetcher
 
   public static List<IntPtr> GetChildWindows(IntPtr parent)
   {
-    List<IntPtr> result = new List<IntPtr>();
+    List<IntPtr> result = new();
     GCHandle listHandle = GCHandle.Alloc(result);
     try
     {
-      Win32Callback childProc = new Win32Callback(EnumWindow);
+      Win32Callback childProc = new(EnumWindow);
       EnumChildWindows(parent, childProc, GCHandle.ToIntPtr(listHandle));
     }
     finally

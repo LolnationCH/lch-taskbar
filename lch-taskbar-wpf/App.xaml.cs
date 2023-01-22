@@ -13,7 +13,7 @@ namespace lch_taskbar_wpf
     public App()
     {
       //Create a new thread for the Automation Class
-      BackgroundWorker worker = new BackgroundWorker();
+      BackgroundWorker worker = new();
       worker.DoWork += new DoWorkEventHandler(worker_DoWork);
       worker.RunWorkerAsync();
     }
@@ -39,14 +39,12 @@ namespace lch_taskbar_wpf
           var currentProcess = Process.GetCurrentProcess();
           if (processId == currentProcess.Id)
             return;
-            
-          using (Process process = Process.GetProcessById(processId))
+
+          using Process process = Process.GetProcessById(processId);
+          Dispatcher.Invoke(() =>
           {
-            Dispatcher.Invoke(() =>
-            {
-              (Current.MainWindow as LCHTaskbar)!.Refresh(process.MainWindowTitle);
-            });
-          }
+            (Current.MainWindow as LCHTaskbar)!.Refresh(process.MainWindowTitle);
+          });
         }
         catch (Exception)
         {

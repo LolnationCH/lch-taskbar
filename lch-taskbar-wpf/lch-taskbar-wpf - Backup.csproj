@@ -11,21 +11,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="TaskbarComponents\ethernet.png" />
-    <None Remove="TaskbarComponents\spotify_icon.png" />
+    <None Remove="TaskbarComponents\Spotify_icon.png" />
     <None Remove="TaskbarComponents\wifi.png" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\lch-windows\lch-window.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="TaskbarComponents\ethernet.png">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="TaskbarComponents\spotify_icon.png" />
-    <Resource Include="TaskbarComponents\wifi.png" />
+    <Folder Include="Ressources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Ressources\Spotify_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
