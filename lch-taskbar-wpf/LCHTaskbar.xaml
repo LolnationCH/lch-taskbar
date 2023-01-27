@@ -18,23 +18,26 @@
         Left="0" Top="0">
   <Grid>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition x:Name="Column1" Width="300"/>
+      <ColumnDefinition x:Name="Column1" Width="200"/>
       <ColumnDefinition x:Name="Column2" Width="*"/>
       <ColumnDefinition x:Name="Column3" Width="200"/>
     </Grid.ColumnDefinitions>
     <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0">
       <cc:ProcessControl x:Name="ProcessSP"/>
-      <cc:WeatherControl Margin="0,3,0,0" Padding="0,0,0,0"/>
-      <cc:SpotifyControl Margin="0,-1,5,0" Padding="0,0,0,0"/>
+      <cc:WeatherControl Margin="0,3,0,0" Padding="0"/>
+      <cc:SpotifyControl Margin="0,-1,5,0" Padding="0"/>
     </StackPanel>
     <Label x:Name="MiddleContent" Foreground="White" 
            Grid.Column="1" Content="Initializing..." 
            HorizontalAlignment="Center" VerticalAlignment="Top" 
            FontSize="10" 
-           Margin="-150,3,0,0" Padding="0,0,0,0"/>
+           Margin="-150,3,0,0" Padding="0"/>
     <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-      <cc:TimeControl Margin="0,-2,5,0" Padding="0,0,0,0"/>
-      <cc:NetworkControl Margin="0,0,0,2"/>
+      <cc:SoundControl Margin="0,-5, 0,-2" Padding="0"/>
+      <cc:BluetoothControl Margin="-5,0,-3,2" Padding="0,0,0,0"/>
+      <cc:EverythingControl Margin="0,0,0,2" Padding="0"/>
+      <cc:NetworkControl Margin="0,-2,0,0" Padding="0"/>
+      <cc:TimeControl Margin="0,-2,5,0" Padding="0"/>
     </StackPanel>
   </Grid>
 </Window>

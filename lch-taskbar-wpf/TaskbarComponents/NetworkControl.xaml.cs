@@ -5,7 +5,7 @@ namespace lch_taskbar_wpf.TaskbarComponents
   /// <summary>
   /// Interaction logic for NetworkControl.xaml
   /// </summary>
-  public partial class NetworkControl : System.Windows.Controls.UserControl
+  public partial class NetworkControl : System.Windows.Controls.Button
   {
     public NetworkControl()
     {
@@ -41,6 +41,14 @@ namespace lch_taskbar_wpf.TaskbarComponents
       internetLabel.Content = interfaceName;
       internetIcon.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/TaskbarComponents/ethernet.png", UriKind.Relative));
 
+    }
+
+    private void NetworkPanel_Click(object sender, System.Windows.RoutedEventArgs e)
+    {
+      var process = new System.Diagnostics.Process();
+      process.StartInfo.FileName = "ms-settings:network";
+      process.StartInfo.UseShellExecute = true;
+      process.Start();
     }
   }    
 }

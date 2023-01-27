@@ -26,6 +26,7 @@ namespace lch_taskbar_wpf
       Width = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds.Width;
       var widthColumn = Width / 3;
       Column1.Width = new System.Windows.GridLength(widthColumn);
+      Column2.Width = new System.Windows.GridLength(widthColumn);
       Column3.Width = new System.Windows.GridLength(widthColumn);
     }
     

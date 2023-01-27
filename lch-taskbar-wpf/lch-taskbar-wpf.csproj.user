@@ -2,10 +2,19 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="TaskbarComponents\BluetoothControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TaskbarComponents\EverythingControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TaskbarComponents\NetworkControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="TaskbarComponents\ProcessControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TaskbarComponents\SoundControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="TaskbarComponents\SpotifyControl.xaml.cs">
@@ -19,10 +28,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="TaskbarComponents\BluetoothControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaskbarComponents\EverythingControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="TaskbarComponents\NetworkControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\ProcessControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaskbarComponents\SoundControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\SpotifyControl.xaml">
