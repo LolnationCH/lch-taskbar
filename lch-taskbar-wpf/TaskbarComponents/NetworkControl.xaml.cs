@@ -1,16 +1,16 @@
 ﻿using System.Net.NetworkInformation;
+using System.Windows;
 
 namespace lch_taskbar_wpf.TaskbarComponents
 {
-  /// <summary>
-  /// Interaction logic for NetworkControl.xaml
-  /// </summary>
-  public partial class NetworkControl : System.Windows.Controls.Button
+  public partial class NetworkControl : System.Windows.Controls.Button, ICustomButton
   {
     public NetworkControl()
     {
       InitializeComponent();
       Setup();
+      
+      Click += CustomButton_Click;
     }
 
     private void Setup()
@@ -21,34 +21,37 @@ namespace lch_taskbar_wpf.TaskbarComponents
       
       if (interfaceName == "Wi-Fi")
       {
-        var wifiConnections = NetworkUtils.GetWifiConnections();
-        if (wifiConnections == null)
+        var WIFIConnections = NetworkUtils.GetWifiConnections();
+        if (WIFIConnections == null)
           return;
 
-        var wifiConnection = wifiConnections.Where(x => x.IsConnected()).FirstOrDefault();
-        var ssid = wifiConnection.SSID;
-        if (string.IsNullOrEmpty(ssid))
+        var WIFIConnection = WIFIConnections.Where(x => x.IsConnected()).FirstOrDefault();
+        var SSID = WIFIConnection.SSID;
+        if (string.IsNullOrEmpty(SSID))
           return;
 
-        var signal = wifiConnection.Signal;
+        var signal = WIFIConnection.Signal;
         if (string.IsNullOrEmpty(signal))
           return;
 
-        internetLabel.Content = $"{ssid} ({signal})";
+        internetLabel.Content = $"{SSID} ({signal})";
         return;
       }
 
       internetLabel.Content = interfaceName;
       internetIcon.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/TaskbarComponents/ethernet.png", UriKind.Relative));
-
+      
     }
-
-    private void NetworkPanel_Click(object sender, System.Windows.RoutedEventArgs e)
+    public void CustomButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {
       var process = new System.Diagnostics.Process();
       process.StartInfo.FileName = "ms-settings:network";
       process.StartInfo.UseShellExecute = true;
       process.Start();
+    }
+
+    public void Refresh()
+    {
     }
   }    
 }

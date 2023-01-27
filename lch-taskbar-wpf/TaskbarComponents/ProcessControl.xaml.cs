@@ -6,9 +6,6 @@ using System.Windows.Media.Imaging;
 
 namespace lch_taskbar_wpf.TaskbarComponents
 {
-  /// <summary>
-  /// Interaction logic for ProcessControl.xaml
-  /// </summary>
   public partial class ProcessControl : StackPanel
   {
     public ProcessControl()
@@ -38,8 +35,7 @@ namespace lch_taskbar_wpf.TaskbarComponents
       if (tag == null)
         return;
 
-      var processInformation = tag as ProcessInformation;
-      if (processInformation == null)
+      if (tag is not ProcessInformation processInformation)
         return;
 
       WindowUtils.SwitchToThisWindow(processInformation.ProcessHwnd);
@@ -47,25 +43,25 @@ namespace lch_taskbar_wpf.TaskbarComponents
 
     private System.Windows.Controls.Image CreateIconForProcess(ProcessInformation processInformation)
     {
-      var image = new System.Windows.Controls.Image();
-      image.Source = Imaging.CreateBitmapSourceFromHIcon(processInformation.ProcessIcon!.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-      image.Width = 12;
-      image.Height = 12;
-      image.Margin = new System.Windows.Thickness(5);
-      image.ToolTip = processInformation.ProcessName;
-      image.Tag = processInformation;
+      var image = new System.Windows.Controls.Image()
+      {
+        Source = Imaging.CreateBitmapSourceFromHIcon(processInformation.ProcessIcon!.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()),
+        Tag = processInformation,
+        Width = 12,
+        Height = 12,
+        Margin = new Thickness(5),
+        ToolTip = processInformation.ProcessName,
+      };
       image.MouseDown += Icon_MouseDown;
       return image;
     }
 
     private void Icon_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
-      var image = sender as System.Windows.Controls.Image;
-      if (image == null)
+      if (sender is not System.Windows.Controls.Image image)
         return;
 
-      ProcessInformation? processInformation = image.Tag as ProcessInformation;
-      if (processInformation == null)
+      if (image.Tag is not ProcessInformation processInformation)
         return;
 
       WindowUtils.SwitchToThisWindow(processInformation.ProcessHwnd);

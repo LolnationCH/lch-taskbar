@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:lch_taskbar_wpf.TaskbarComponents"
              mc:Ignorable="d" 
              Style="{StaticResource ButtonWithNoOver}"
-             Click="NetworkPanel_Click"
              d:DesignHeight="20" d:DesignWidth="800">
     <Grid>
     <Grid.ColumnDefinitions>

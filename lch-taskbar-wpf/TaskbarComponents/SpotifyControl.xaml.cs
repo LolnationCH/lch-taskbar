@@ -5,25 +5,13 @@ using System.Windows.Threading;
 
 namespace lch_taskbar_wpf.TaskbarComponents
 {
-  public partial class SpotifyControl : System.Windows.Controls.Button
+  public partial class SpotifyControl : System.Windows.Controls.Button, ICustomButton
     {
     public SpotifyControl()
     {
-      InitializeComponent();      
-      SetupSpotifyControl();
-    }
-
-    private void SetupSpotifyControl()
-    {
-      DispatcherTimer LiveTime = new DispatcherTimer();
-      LiveTime.Interval = TimeSpan.FromSeconds(1);
-      LiveTime.Tick += currentTime_Tick;
-      LiveTime.Start();
-    }
-
-    private void currentTime_Tick(object? sender, EventArgs e)
-    {
-      SetSpotifyControl();
+      InitializeComponent();
+      Refresh();
+      Click += CustomButton_Click;
     }
 
     private void SetSpotifyControl()
@@ -36,16 +24,21 @@ namespace lch_taskbar_wpf.TaskbarComponents
       });
     }
 
-    private void Spotify_Click(object sender, RoutedEventArgs e)
+    public void Refresh()
     {
-      var spotifyPath = SpotifyUtils.GetSpotifyPath();
-      if (File.Exists(spotifyPath))
+      SetSpotifyControl();
+    }
+
+    public void CustomButton_Click(object sender, RoutedEventArgs e)
+    {
+      var SpotifyPath = SpotifyUtils.GetSpotifyPath();
+      if (File.Exists(SpotifyPath))
       {
         var process = new Process();
-        process.StartInfo.FileName = spotifyPath;
+        process.StartInfo.FileName = SpotifyPath;
         process.StartInfo.UseShellExecute = true;
         process.Start();
-      }      
+      }
     }
   }
 }

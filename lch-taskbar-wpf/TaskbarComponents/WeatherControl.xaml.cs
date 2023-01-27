@@ -2,9 +2,6 @@
 
 namespace lch_taskbar_wpf.TaskbarComponents
 {
-  /// <summary>
-  /// Interaction logic for WeatherControl.xaml
-  /// </summary>
   public partial class WeatherControl : System.Windows.Controls.Label
   {
     const string location = "Montreal";
@@ -17,14 +14,16 @@ namespace lch_taskbar_wpf.TaskbarComponents
     }
     private void SetupWeather()
     {
-      DispatcherTimer LiveTime = new DispatcherTimer();
-      LiveTime.Interval = TimeSpan.FromHours(2);
-      LiveTime.Tick += weather_Tick;
+      DispatcherTimer LiveTime = new()
+      {
+        Interval = TimeSpan.FromHours(2)
+      };
+      LiveTime.Tick += Weather_Tick;
       LiveTime.Start();
       SetWeather();
     }
 
-    private void weather_Tick(object? sender, EventArgs e)
+    private void Weather_Tick(object? sender, EventArgs e)
     {
       SetWeather();
     }

@@ -5,41 +5,29 @@ using System.Windows.Threading;
 
 namespace lch_taskbar_wpf.TaskbarComponents
 {
-  /// <summary>
-  /// Interaction logic for SoundControl.xaml
-  /// </summary>
-  public partial class SoundControl : System.Windows.Controls.Button
+  public partial class SoundControl : System.Windows.Controls.Button, ICustomButton
     {
     public SoundControl()
     {
       InitializeComponent();
       Refresh();
-
-      DispatcherTimer LiveTime = new DispatcherTimer();
-      LiveTime.Interval = TimeSpan.FromSeconds(1);
-      LiveTime.Tick += RefreshSoundControl_tick;
-      LiveTime.Start();
+      Click += CustomButton_Click;
     }
 
-    private void RefreshSoundControl_tick(object? sender, EventArgs e)
-    {
-      Refresh();
-    }
-
-    private void VolumeMixer_Click(object sender, RoutedEventArgs e)
-    {
-      var process = new System.Diagnostics.Process();
-      process.StartInfo.FileName = "ms-settings:apps-volume";
-      process.StartInfo.UseShellExecute = true;
-      process.Start();
-    }
-
-    private void Refresh()
+    public void Refresh()
     {
       var enumerator = new MMDeviceEnumerator();
       var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Console);
       var volume = device.AudioEndpointVolume.MasterVolumeLevelScalar * 100;
       OutputDeviceLabel.Content = $"{device.FriendlyName} - ({volume:0})%";
+    }
+
+    public void CustomButton_Click(object sender, RoutedEventArgs e)
+    {
+      var process = new System.Diagnostics.Process();
+      process.StartInfo.FileName = "ms-settings:apps-volume";
+      process.StartInfo.UseShellExecute = true;
+      process.Start();
     }
   }
 }

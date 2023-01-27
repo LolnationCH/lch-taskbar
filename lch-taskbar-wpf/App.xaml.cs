@@ -4,9 +4,6 @@ using System.Windows.Automation;
 
 namespace lch_taskbar_wpf
 {
-  /// <summary>
-  /// Interaction logic for App.xaml
-  /// </summary>
   public partial class App : System.Windows.Application
   {
 
@@ -14,11 +11,11 @@ namespace lch_taskbar_wpf
     {
       //Create a new thread for the Automation Class
       BackgroundWorker worker = new();
-      worker.DoWork += new DoWorkEventHandler(worker_DoWork);
+      worker.DoWork += new DoWorkEventHandler(Worker_DoWork);
       worker.RunWorkerAsync();
     }
 
-    private void worker_DoWork(object? sender, DoWorkEventArgs e)
+    private void Worker_DoWork(object? sender, DoWorkEventArgs e)
     {
       AutomationFocusChangedEventHandler focusHandler = OnFocusChanged;
       Automation.AddAutomationFocusChangedEventHandler(focusHandler);

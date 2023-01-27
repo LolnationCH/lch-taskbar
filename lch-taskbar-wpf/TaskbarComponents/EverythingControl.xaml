@@ -8,7 +8,6 @@
              BorderThickness="0"
              Background="Transparent"
              d:Background="Black"
-             Click="EverythingButton_Click"
              Style="{StaticResource ButtonWithNoOver}"
              d:DesignHeight="450" d:DesignWidth="800">
   <Image Source="/TaskbarComponents/everything.png"/>

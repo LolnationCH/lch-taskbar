@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:lch_taskbar_wpf.TaskbarComponents"
              mc:Ignorable="d" 
              Foreground="White" FontSize="10" BorderThickness="0" Background="Transparent"
-             Click="CurrentTime_Click"
              Style="{StaticResource ButtonWithNoOver}"
              d:DesignHeight="450" d:DesignWidth="800">
 </Button>

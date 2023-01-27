@@ -2,20 +2,22 @@
 
 namespace lch_taskbar_wpf.TaskbarComponents
 {
-  /// <summary>
-  /// Interaction logic for EverythingControl.xaml
-  /// </summary>
-  public partial class EverythingControl : System.Windows.Controls.Button
-    {
+  public partial class EverythingControl : System.Windows.Controls.Button, ICustomButton
+  {
     public EverythingControl()
     {
       InitializeComponent();
+      Refresh();
+      Click += CustomButton_Click;
     }
 
-    private void EverythingButton_Click(object sender, RoutedEventArgs e)
+    public void CustomButton_Click(object sender, RoutedEventArgs e)
     {
-      // Launch the everything executable
       System.Diagnostics.Process.Start("C:\\Program Files\\Everything\\Everything.exe");
+    }
+
+    public void Refresh()
+    {
     }
   }
 }

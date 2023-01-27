@@ -19,6 +19,36 @@ namespace lch_taskbar_wpf
     {
       WindowsTaskbar.Hide();
       SetTaskbarToMonitorSize();
+      SetupDispatcherTimer();
+    }
+
+    private void SetupDispatcherTimer()
+    {
+      DispatcherTimer LiveTime = new()
+      {
+        Interval = TimeSpan.FromSeconds(1)
+      };
+      LiveTime.Tick += ControlsTimer_Tick;
+      LiveTime.Start();
+    }
+
+    private void ControlsTimer_Tick(object? sender, EventArgs e)
+    {
+      foreach (var control in leftSP.Children)
+      {
+        if (control is TaskbarComponents.ICustomButton)
+        {
+          (control as TaskbarComponents.ICustomButton)!.Refresh();
+        }
+      }
+      
+      foreach (var control in rightSP.Children)
+      {
+        if (control is TaskbarComponents.ICustomButton)
+        {
+          (control as TaskbarComponents.ICustomButton)!.Refresh();
+        }
+      }
     }
 
     private void SetTaskbarToMonitorSize()
@@ -51,6 +81,7 @@ namespace lch_taskbar_wpf
         this.Show();
       WindowsTaskbar.Toggle();
     }
+    
     protected override void OnClosing(CancelEventArgs e)
     {
       WindowsTaskbar.Show();

@@ -1,29 +1,21 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace lch_taskbar_wpf.TaskbarComponents
 {
-  /// <summary>
-  /// Interaction logic for TimeControl.xaml
-  /// </summary>
-  public partial class TimeControl : System.Windows.Controls.Button
+  public partial class TimeControl : System.Windows.Controls.Button, ICustomButton
     {
     private bool showTime = true;
     
     public TimeControl()
     {
       InitializeComponent();
-      SetupCurrentTimeLabel();
+      Refresh();
+      Click += CustomButton_Click;
     }
 
-    private void SetupCurrentTimeLabel()
-    {
-      DispatcherTimer LiveTime = new DispatcherTimer();
-      LiveTime.Interval = TimeSpan.FromSeconds(1);
-      LiveTime.Tick += currentTime_Tick;
-      LiveTime.Start();
-    }
-    private void currentTime_Tick(object? sender, EventArgs e)
+    public void Refresh()
     {
       if (showTime)
         Content = DateTime.Now.ToString("HH:mm:ss");
@@ -31,7 +23,7 @@ namespace lch_taskbar_wpf.TaskbarComponents
         Content = DateTime.Now.ToString("dd/MM/yyyy");
     }
 
-    private void CurrentTime_Click(object sender, System.Windows.RoutedEventArgs e)
+    public void CustomButton_Click(object sender, RoutedEventArgs e)
     {
       showTime = !showTime;
     }
