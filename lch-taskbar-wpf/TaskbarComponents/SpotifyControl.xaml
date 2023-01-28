@@ -15,7 +15,7 @@
       <ColumnDefinition Width="20"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <Image x:Name="SpotifyIcon" Height="15" Source="/TaskbarComponents/Spotify_icon.png"/>
+    <Image x:Name="SpotifyIcon" Height="15" Source="/Ressources/spotify_icon.png"/>
     <Label x:Name="Spotify" d:Content="Title" Grid.Column="1" Foreground="White" FontSize="10" Margin="0,-3,0,0"/>
   </Grid>
 </Button>

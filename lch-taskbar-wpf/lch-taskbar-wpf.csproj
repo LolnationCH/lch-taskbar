@@ -30,16 +30,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="TaskbarComponents\bluetoothOff.png" />
-    <Resource Include="TaskbarComponents\bluetoothOn.png" />
-    <Resource Include="TaskbarComponents\ethernet.png">
+    <Resource Include="Ressources\bluetoothOff.png" />
+    <Resource Include="Ressources\bluetoothOn.png" />
+    <Resource Include="Ressources\ethernet.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="TaskbarComponents\everything.png">
+    <Resource Include="Ressources\everything.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="TaskbarComponents\spotify_icon.png" />
-    <Resource Include="TaskbarComponents\wifi.png" />
+    <Resource Include="Ressources\spotify_icon.png" />
+    <Resource Include="Ressources\wifi.png" />
   </ItemGroup>
 
 </Project>

@@ -10,5 +10,5 @@
              d:Background="Black"
              Style="{StaticResource ButtonWithNoOver}"
              d:DesignHeight="15" d:DesignWidth="800">
-  <Image x:Name="BluetoothIcon" Source="/TaskbarComponents/bluetoothOff.png"/>
+  <Image x:Name="BluetoothIcon" Source="/Ressources/bluetoothOff.png"/>
 </Button>

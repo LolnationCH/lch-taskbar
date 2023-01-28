@@ -39,7 +39,7 @@ namespace lch_taskbar_wpf.TaskbarComponents
       }
 
       internetLabel.Content = interfaceName;
-      internetIcon.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/TaskbarComponents/ethernet.png", UriKind.Relative));
+      internetIcon.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Ressources/ethernet.png", UriKind.Relative));
       
     }
     public void CustomButton_Click(object sender, System.Windows.RoutedEventArgs e)
