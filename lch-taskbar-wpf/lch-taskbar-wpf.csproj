@@ -25,6 +25,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\lch-configuration\lch-configuration.csproj" />
     <ProjectReference Include="..\lch-windows\lch-window.csproj" />
   </ItemGroup>
 
