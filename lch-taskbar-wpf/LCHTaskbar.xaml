@@ -30,8 +30,7 @@
     <Label x:Name="MiddleContent" Foreground="White" 
            Grid.Column="1" Content="Initializing..." 
            HorizontalAlignment="Center" VerticalAlignment="Top" 
-           FontSize="10" 
-           Margin="-150,3,0,0" Padding="0"/>
+           FontSize="10"/>
     <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
       <cc:SoundControl Margin="0,-5, 0,-2" Padding="0"/>
       <cc:BluetoothControl Margin="-5,0,-3,2" Padding="0,0,0,0"/>
