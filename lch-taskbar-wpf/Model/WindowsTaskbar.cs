@@ -26,20 +26,25 @@ public static class WindowsTaskbar
   }
 
   private const string taskbarClassName = "Shell_TrayWnd";
+  private const string taskbarSecondaryClassName = "Shell_SecondaryTrayWnd";
 
   private static bool _isHidden = true;
 
   public static void Show()
   {
     var window = FindWindow(taskbarClassName, "");
+    var secondWindow = FindWindow(taskbarSecondaryClassName, "");
     SetWindowPos(window, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.ShowWindow);
+    SetWindowPos(secondWindow, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.ShowWindow);
     _isHidden = false;
   }
 
   public static void Hide()
   {
     var window = FindWindow(taskbarClassName, "");
+    var secondWindow = FindWindow(taskbarSecondaryClassName, "");
     SetWindowPos(window, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.HideWindow);
+    SetWindowPos(secondWindow, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.HideWindow);
     _isHidden = true;
   }
 
