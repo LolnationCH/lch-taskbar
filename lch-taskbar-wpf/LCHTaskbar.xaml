@@ -29,6 +29,7 @@
     </StackPanel>
     <Label x:Name="MiddleContent" Foreground="White" 
            Grid.Column="1" Content="Initializing..." 
+           Margin="0,-2,0,0"
            HorizontalAlignment="Center" VerticalAlignment="Top" 
            FontSize="10"/>
     <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">

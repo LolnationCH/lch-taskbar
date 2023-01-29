@@ -4,8 +4,6 @@ namespace lch_taskbar_wpf.TaskbarComponents
 {
   public partial class WeatherControl : System.Windows.Controls.Label
   {
-    const string location = "Montreal";
-    
     public WeatherControl()
     {
       InitializeComponent();
@@ -32,15 +30,15 @@ namespace lch_taskbar_wpf.TaskbarComponents
     {
       Dispatcher.Invoke(() =>
       {
-        Content = WeatherUtils.GetWeather(location);
-        ToolTip = location;
+        Content = WeatherUtils.GetWeather();
+        ToolTip = Configuration.Configuration.GetInstance().GetData.WeatherLocation;
       });
     }
 
     private void WeatherButton_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
       var process = new System.Diagnostics.Process();
-      process.StartInfo.FileName = "https://wttr.in/" + location;
+      process.StartInfo.FileName = WeatherUtils.GettWeatherViewingUrl();
       process.StartInfo.UseShellExecute = true;
       process.Start();
     }

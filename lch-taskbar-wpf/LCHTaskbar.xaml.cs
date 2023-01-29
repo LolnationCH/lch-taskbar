@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using System.Windows.Media;
 
 namespace lch_taskbar_wpf
 {
@@ -20,6 +21,7 @@ namespace lch_taskbar_wpf
       WindowsTaskbar.Hide();
       SetTaskbarToMonitorSize();
       SetupDispatcherTimer();
+      SetupTaskbarStyle();
     }
 
     private void SetupDispatcherTimer()
@@ -48,6 +50,22 @@ namespace lch_taskbar_wpf
         {
           (control as TaskbarComponents.ICustomButton)!.Refresh();
         }
+      }
+    }
+    
+    private void SetupTaskbarStyle()
+    {
+      try
+      {
+        var BackgroundColor = (new BrushConverter().ConvertFrom(Configuration.Configuration.GetInstance().GetData.BackgroundColor) as SolidColorBrush)!; 
+        BackgroundColor.Opacity = Double.Parse(Configuration.Configuration.GetInstance().GetData.Opacity) / 100;
+        Background = BackgroundColor;
+      }
+      catch
+      {
+        var BackgroundColor = (new BrushConverter().ConvertFrom("#000000") as SolidColorBrush)!;
+        BackgroundColor.Opacity = 0;
+        Background = BackgroundColor;
       }
     }
 

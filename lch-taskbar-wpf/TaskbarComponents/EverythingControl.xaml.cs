@@ -13,7 +13,7 @@ namespace lch_taskbar_wpf.TaskbarComponents
 
     public void CustomButton_Click(object sender, RoutedEventArgs e)
     {
-      System.Diagnostics.Process.Start("C:\\Program Files\\Everything\\Everything.exe");
+      System.Diagnostics.Process.Start(Configuration.Configuration.GetInstance().GetData.EverythingPath);
     }
 
     public void Refresh()
