@@ -36,6 +36,11 @@ namespace lch_taskbar_wpf.TaskbarComponents
       });
     }
 
+    public void Refresh()
+    {
+      SetWeather();
+    }
+
     private void WeatherButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {
       var process = new System.Diagnostics.Process();

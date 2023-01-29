@@ -39,6 +39,11 @@
       }
     }
 
+    public void Reload()
+    {
+      Load();
+    }
+    
     public Configuration()
     {
       Load();

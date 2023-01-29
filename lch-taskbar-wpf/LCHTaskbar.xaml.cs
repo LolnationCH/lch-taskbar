@@ -3,6 +3,7 @@ using System.Windows.Interop;
 using System.Windows.Threading;
 using System.Windows.Media;
 using lch_taskbar_wpf.Utils;
+using lch_taskbar_wpf.TaskbarComponents;
 
 namespace lch_taskbar_wpf
 {
@@ -113,7 +114,31 @@ namespace lch_taskbar_wpf
         this.Show();
       WindowsTaskbar.Toggle();
     }
-    
+
+    private void ToggleOnlyThis()
+    {
+      if (this.IsVisible)
+        this.Hide();
+      else
+        this.Show();
+    }
+
+    private void Reload()
+    {
+      Configuration.Configuration.GetInstance().Reload();
+      Setup();
+      var configuredLabels = WindowUtils.FindVisualChilds<ConfiguredLabel>(this);
+      foreach (var label in configuredLabels)
+      {
+        label.Refresh();
+      }
+      var weatherControls = WindowUtils.FindVisualChilds<WeatherControl>(this);
+      foreach (var weatherControl in weatherControls)
+      {
+        weatherControl.Refresh();
+      }
+    }
+
     protected override void OnClosing(CancelEventArgs e)
     {
       WindowsTaskbar.Show();

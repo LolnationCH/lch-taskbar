@@ -17,5 +17,10 @@ namespace lch_taskbar_wpf.TaskbarComponents
       FontFamily = new System.Windows.Media.FontFamily(Configuration.Configuration.GetInstance().GetData.FontFamily);
       FontSize = Double.Parse(Configuration.Configuration.GetInstance().GetData.FontSize);
     }
+
+    public void Refresh()
+    {
+      SetupLabel();
+    }
   }
 }
