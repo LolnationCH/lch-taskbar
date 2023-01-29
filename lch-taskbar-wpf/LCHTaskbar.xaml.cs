@@ -2,6 +2,7 @@
 using System.Windows.Interop;
 using System.Windows.Threading;
 using System.Windows.Media;
+using lch_taskbar_wpf.Utils;
 
 namespace lch_taskbar_wpf
 {
@@ -52,20 +53,33 @@ namespace lch_taskbar_wpf
         }
       }
     }
+
+    private (string, double) GetBackgroundColorConfiguration()
+    {
+      return (Configuration.Configuration.GetInstance().GetData.BackgroundColor,
+              Double.Parse(Configuration.Configuration.GetInstance().GetData.Opacity));
+    }
     
     private void SetupTaskbarStyle()
     {
       try
       {
-        var BackgroundColor = (new BrushConverter().ConvertFrom(Configuration.Configuration.GetInstance().GetData.BackgroundColor) as SolidColorBrush)!; 
-        BackgroundColor.Opacity = Double.Parse(Configuration.Configuration.GetInstance().GetData.Opacity) / 100;
+        (var color, var opacity) = GetBackgroundColorConfiguration();
+        var BackgroundColor = ColorUtils.GetSolidColorBrushFromHex(color, opacity);
+        if (BackgroundColor == null)
+        {
+          MessageBox.Show("Cannot parse the background color in the configuration file");
+          throw new Exception();
+        }
         Background = BackgroundColor;
       }
       catch
       {
-        var BackgroundColor = (new BrushConverter().ConvertFrom("#000000") as SolidColorBrush)!;
-        BackgroundColor.Opacity = 0;
-        Background = BackgroundColor;
+        Background = new SolidColorBrush()
+        {
+          Color = Colors.White,
+          Opacity = 0
+        };
       }
     }
 

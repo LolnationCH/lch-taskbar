@@ -11,6 +11,6 @@
              Style="{StaticResource ButtonWithNoOver}"
              d:DesignHeight="15" d:DesignWidth="800">
   <Grid>
-    <Label x:Name="OutputDeviceLabel" Foreground="White" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <local:ConfiguredLabel x:Name="OutputDeviceLabel" HorizontalAlignment="Center" VerticalAlignment="Center"/>
   </Grid>
 </Button>

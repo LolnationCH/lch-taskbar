@@ -1,9 +1,10 @@
-﻿using System.Windows.Threading;
+﻿using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace lch_taskbar_wpf.TaskbarComponents
 {
-  public partial class WeatherControl : System.Windows.Controls.Label
-  {
+  public partial class WeatherControl : System.Windows.Controls.Button
+    {
     public WeatherControl()
     {
       InitializeComponent();
@@ -30,12 +31,12 @@ namespace lch_taskbar_wpf.TaskbarComponents
     {
       Dispatcher.Invoke(() =>
       {
-        Content = WeatherUtils.GetWeather();
+        TimeLabel.Content = WeatherUtils.GetWeather();
         ToolTip = Configuration.Configuration.GetInstance().GetData.WeatherLocation;
       });
     }
 
-    private void WeatherButton_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    private void WeatherButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {
       var process = new System.Diagnostics.Process();
       process.StartInfo.FileName = WeatherUtils.GettWeatherViewingUrl();
