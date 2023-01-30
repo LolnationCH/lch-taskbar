@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows.Interop;
+﻿using System.Windows.Interop;
 
 namespace lch_taskbar_wpf
 {
@@ -18,7 +17,7 @@ namespace lch_taskbar_wpf
       WindowUtils.RemoveFromAltTab(handle);
     }
 
-    private void RegisterHotkeys(IntPtr handle)
+    private static void RegisterHotkeys(IntPtr handle)
     {
       GlobalHotkeys.RegisterHotKey(handle, GlobalHotkeys.HOTKEY_ID, GlobalHotkeys.MOD_HYPER, (uint)GlobalHotkeys.VK.KEY_H);
       GlobalHotkeys.RegisterHotKey(handle, GlobalHotkeys.HOTKEY_ID, GlobalHotkeys.MOD_HYPER, (uint)GlobalHotkeys.VK.KEY_R);
@@ -37,7 +36,7 @@ namespace lch_taskbar_wpf
       GlobalHotkeys.RegisterHotKey(handle, GlobalHotkeys.HOTKEY_ID, GlobalHotkeys.MOD_HYPER, (uint)GlobalHotkeys.VK.KEY_0);
     }
 
-    private void handleHookPress(int vkey, ref bool handled)
+    private void HandleHookPress(int vkey, ref bool handled)
     {
       switch (vkey)
       {
@@ -77,10 +76,13 @@ namespace lch_taskbar_wpf
 
       if (wParam.ToInt32() == GlobalHotkeys.HOTKEY_ID)
       {
-        int vkey = (((int)lParam >> 16) & 0xFFFF);
-        handleHookPress(vkey, ref handled);
+        checked
+        {
+          int vkey = ((int)lParam >> 16) & 0xFFFF;
+          HandleHookPress(vkey, ref handled);
+        }
       }
-      
+
       return IntPtr.Zero;
     }
   }

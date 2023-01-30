@@ -4,21 +4,18 @@
   {
     private static Configuration? _instance;
     private readonly string configPath = "config.json";
-    private ConfigurationData configurationData { get; set; } = new();
-    public ConfigurationData GetData { get => configurationData; }
+    private ConfigurationData ConfigurationData { get; set; } = new();
+    public ConfigurationData GetData { get => ConfigurationData; }
 
     public static Configuration GetInstance()
     {
-      if (_instance == null)
-      {
-        _instance = new Configuration();
-      }
+      _instance ??= new Configuration();
       return _instance;
     }
     
     public void Save()
     {
-      var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(configurationData);
+      var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(ConfigurationData);
       System.IO.File.WriteAllText(configPath, jsonString);
     }
     
@@ -30,7 +27,7 @@
         var configurationData = Newtonsoft.Json.JsonConvert.DeserializeObject<ConfigurationData>(json);
         if (configurationData != null)
         {
-          this.configurationData = configurationData;
+          this.ConfigurationData = configurationData;
         }
       }
       else

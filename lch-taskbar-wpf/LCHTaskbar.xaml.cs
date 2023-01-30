@@ -20,6 +20,7 @@ namespace lch_taskbar_wpf
 
     private void Setup()
     {
+      SetupComponents();
       WindowsTaskbar.Hide();
       SetTaskbarToMonitorSize();
       SetupDispatcherTimer();
@@ -55,7 +56,7 @@ namespace lch_taskbar_wpf
       }
     }
 
-    private (string, double) GetBackgroundColorConfiguration()
+    private static (string, double) GetBackgroundColorConfiguration()
     {
       return (Configuration.Configuration.GetInstance().GetData.BackgroundColor,
               Double.Parse(Configuration.Configuration.GetInstance().GetData.Opacity));
@@ -98,29 +99,19 @@ namespace lch_taskbar_wpf
       ProcessSP.Refresh();
       SetCurrentProcessTitle(title);
     }
-    public void SetCurrentProcessTitle(string title)
-    {
-      Dispatcher.Invoke(() =>
-      {
-        MiddleContent.Content = title;
-      });
-    }
 
     private void Toggle()
     {
-      if (this.IsVisible)
-        this.Hide();
-      else
-        this.Show();
+      ToggleOnlyThis();
       WindowsTaskbar.Toggle();
     }
 
     private void ToggleOnlyThis()
     {
-      if (this.IsVisible)
-        this.Hide();
+      if (IsVisible)
+        Hide();
       else
-        this.Show();
+        Show();
     }
 
     private void Reload()

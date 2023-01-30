@@ -1,6 +1,6 @@
 ﻿namespace lch_taskbar_wpf.Configuration
 {
-  public class ConfigurationData : ConfigurationPreference, ConfigurationAppearance
+  public class ConfigurationData : IConfigurationPreference, IConfigurationAppearance
   {
     #region ConfigurationPreference
     public string WeatherLocation { get; set; } = "Montreal";
@@ -16,7 +16,7 @@
     public string BackgroundColor { get; set; } = "#000000";
     public string Opacity { get; set; } = "0";
     public TaskbarPosition Position { get; set; } = TaskbarPosition.Top;
-    public List<string> ComponentList { get; set; } = new();
+    public ComponentList ComponentList { get; set; } = new();
     #endregion
   }
 }
