@@ -15,10 +15,12 @@ namespace lch_taskbar_wpf
     }
     public void SetCurrentProcessTitle(string title)
     {
-      var controls = WindowUtils.FindVisualChilds<ConfiguredLabel>(this);
       Dispatcher.Invoke(() =>
       {
-        controls.Where(x => x.Name == "MiddleContent").FirstOrDefault()!.Content = title;
+        var control = WindowUtils.FindVisualChilds<ConfiguredLabel>(this).Where(x => x.Name == "MiddleContent").FirstOrDefault();
+        if (control == null)
+          return;
+        control.Content = title;
       });
     }
 
@@ -56,6 +58,7 @@ namespace lch_taskbar_wpf
         },
         "process" or "processes" => new ProcessControl()
         {
+          Name = "ProcessControl",
           Margin = new Thickness(0, -3, 0, 0)
         },
         "volume" or "sound" => new SoundControl()

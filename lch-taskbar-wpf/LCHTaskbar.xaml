@@ -23,24 +23,11 @@
       <ColumnDefinition x:Name="Column3" Width="200"/>
     </Grid.ColumnDefinitions>
     <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0">
-      <cc:ProcessControl x:Name="ProcessSP"/>
-      <cc:WeatherControl Margin="0,-3,0,0"/>
-      <cc:SpotifyControl Margin="0,-2,5,0"/>
     </StackPanel>
     <StackPanel x:Name="middleSP" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
-      <cc:ConfiguredLabel
-           x:Name="MiddleContent"
-           Content="Initializing..." 
-           Margin="0,-1,0,0"
-           HorizontalAlignment="Center" VerticalAlignment="Top"/>
     </StackPanel>
-    
+
     <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-      <cc:SoundControl Margin="0,-5, 0,-2"/>
-      <cc:BluetoothControl Margin="-5,0,-3,2"/>
-      <cc:EverythingControl Margin="0,0,0,2"/>
-      <cc:NetworkControl Margin="0,-1,0,0"/>
-      <cc:TimeControl Margin="0,-3,0,0"/>
     </StackPanel>
   </Grid>
 </Window>

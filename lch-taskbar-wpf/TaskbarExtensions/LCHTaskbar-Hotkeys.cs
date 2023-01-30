@@ -1,4 +1,5 @@
-﻿using System.Windows.Interop;
+﻿using lch_taskbar_wpf.TaskbarComponents;
+using System.Windows.Interop;
 
 namespace lch_taskbar_wpf
 {
@@ -62,7 +63,10 @@ namespace lch_taskbar_wpf
         case (int)GlobalHotkeys.VK.KEY_8:
         case (int)GlobalHotkeys.VK.KEY_9:
         case (int)GlobalHotkeys.VK.KEY_0:
-          ProcessSP.LaunchProcessByIndex((int)(vkey - (uint)GlobalHotkeys.VK.KEY_0) - 1);
+          var control = WindowUtils.FindVisualChilds<ProcessControl>(this).Where(x => x.Name == "ProcessControl").FirstOrDefault();
+          if (control == null)
+            break;
+          control.LaunchProcessByIndex((int)(vkey - (uint)GlobalHotkeys.VK.KEY_0) - 1);
           break;
       }
       handled = true;

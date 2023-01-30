@@ -96,6 +96,9 @@ namespace lch_taskbar_wpf
     
     public void Refresh(string title)
     {
+      var ProcessSP = WindowUtils.FindVisualChilds<ProcessControl>(this).Where(x => x.Name == "ProcessControl").FirstOrDefault();
+      if (ProcessSP == null)
+        return;
       ProcessSP.Refresh();
       SetCurrentProcessTitle(title);
     }
