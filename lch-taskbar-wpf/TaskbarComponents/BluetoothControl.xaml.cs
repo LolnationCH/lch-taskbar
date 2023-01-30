@@ -27,7 +27,7 @@ namespace lch_taskbar_wpf.TaskbarComponents
     {
       var hasPairedDevices = new BluetoothClient().PairedDevices.Any();
       var BluetoothLogo = hasPairedDevices ? "BluetoothOn" : "BluetoothOff";
-      BluetoothIcon.Source = new BitmapImage(new Uri($"/TaskbarComponents/{BluetoothLogo}.png", UriKind.Relative));
+      BluetoothIcon.Source = new BitmapImage(new Uri($"/Ressources/{BluetoothLogo}.png", UriKind.Relative));
     }
   }
 }

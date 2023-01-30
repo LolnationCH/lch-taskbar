@@ -13,6 +13,9 @@ namespace lch_taskbar_wpf
       BackgroundWorker worker = new();
       worker.DoWork += new DoWorkEventHandler(Worker_DoWork);
       worker.RunWorkerAsync();
+
+      // Just get the instance to load the config
+      Configuration.Configuration.GetInstance();
     }
 
     private void Worker_DoWork(object? sender, DoWorkEventArgs e)
