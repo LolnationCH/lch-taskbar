@@ -17,6 +17,7 @@
     public string Opacity { get; set; } = "0";
     public TaskbarPosition Position { get; set; } = TaskbarPosition.Top;
     public ComponentList ComponentList { get; set; } = new();
+    public List<ShortcutData> ShortcutsData { get; set; } = new();
     #endregion
   }
 }

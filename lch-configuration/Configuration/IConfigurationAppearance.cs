@@ -66,5 +66,6 @@ namespace lch_taskbar_wpf.Configuration
     public string Opacity { get; set; }
     public TaskbarPosition Position { get; set; }
     public ComponentList ComponentList { get; set; }
-  }
+    public List<ShortcutData> ShortcutsData { get; set; }
+}
 }

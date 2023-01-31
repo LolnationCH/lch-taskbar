@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using lch_taskbar_wpf.Utils;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;

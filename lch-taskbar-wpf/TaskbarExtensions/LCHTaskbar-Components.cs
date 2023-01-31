@@ -65,6 +65,10 @@ namespace lch_taskbar_wpf
         {
           Margin = new Thickness(0, -5, 0, -2)
         },
+        "shortcuts" or "shortcut" => new ShortcutsControl()
+        {
+          Margin = new Thickness(0, -2, 0, 0)
+        },
         "spotify" => new SpotifyControl()
         {
           Margin = new Thickness(0, -2, 5, 0)
