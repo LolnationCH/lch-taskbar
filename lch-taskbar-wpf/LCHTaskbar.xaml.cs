@@ -93,13 +93,15 @@ namespace lch_taskbar_wpf
       Column2.Width = new System.Windows.GridLength(widthColumn);
       Column3.Width = new System.Windows.GridLength(widthColumn);
     }
+
+    private List<ProcessControl> GetProcessControls()
+    {
+      return WindowUtils.FindVisualChilds<ProcessControl>(this).Where(x => x.Name == "ProcessControl").ToList();
+    }
     
     public void Refresh(string title)
     {
-      var ProcessSP = WindowUtils.FindVisualChilds<ProcessControl>(this).Where(x => x.Name == "ProcessControl").FirstOrDefault();
-      if (ProcessSP == null)
-        return;
-      ProcessSP.Refresh();
+      GetProcessControls().ForEach(x => x.Refresh());
       SetCurrentProcessTitle(title);
     }
 

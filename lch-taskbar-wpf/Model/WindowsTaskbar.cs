@@ -43,6 +43,8 @@ public static class WindowsTaskbar
   {
     var window = FindWindow(taskbarClassName, "");
     var secondWindow = FindWindow(taskbarSecondaryClassName, "");
+    SetWindowPos(window, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.ShowWindow);
+    SetWindowPos(secondWindow, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.ShowWindow);
     SetWindowPos(window, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.HideWindow);
     SetWindowPos(secondWindow, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.HideWindow);
     _isHidden = true;

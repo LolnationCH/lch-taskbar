@@ -63,9 +63,10 @@ namespace lch_taskbar_wpf
         case (int)GlobalHotkeys.VK.KEY_8:
         case (int)GlobalHotkeys.VK.KEY_9:
         case (int)GlobalHotkeys.VK.KEY_0:
-          var control = WindowUtils.FindVisualChilds<ProcessControl>(this).Where(x => x.Name == "ProcessControl").FirstOrDefault();
+          var control = GetProcessControls().FirstOrDefault();
           if (control == null)
             break;
+          
           control.LaunchProcessByIndex((int)(vkey - (uint)GlobalHotkeys.VK.KEY_0) - 1);
           break;
       }
