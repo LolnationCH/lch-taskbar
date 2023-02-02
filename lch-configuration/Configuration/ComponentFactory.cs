@@ -7,7 +7,6 @@ namespace lch_configuration.Configuration
     static readonly Dictionary<string, IComponentOptions?>  optionsByComponentName = new()
       {
         {"bluetooth", null},
-        {"everything", null},
         {"network", null},
         {"process", null},
         {"processes", null},

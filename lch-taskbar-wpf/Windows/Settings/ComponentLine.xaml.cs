@@ -23,7 +23,7 @@ namespace lch_taskbar_wpf.Windows.Settings
     public void SetComponentInformation(Component component)
     {
       ComponentList_ComboBox.SelectedItem = component.Name;
-      EditButton.Tag = component.Options;
+      currentOptions = component.Options;
     }
 
     private void MoveUp_Click(object sender, RoutedEventArgs e)
@@ -42,7 +42,7 @@ namespace lch_taskbar_wpf.Windows.Settings
 
     public Component? GetComponent()
     {
-      return ComponentFactory.CreateComponentFromNameAndOptions(currentSelection, EditButton.Tag as IComponentOptions);
+      return ComponentFactory.CreateComponentFromNameAndOptions(currentSelection, currentOptions);
     }
 
     private void ComponentList_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

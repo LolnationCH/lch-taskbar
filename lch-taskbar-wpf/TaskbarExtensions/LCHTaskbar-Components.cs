@@ -51,10 +51,6 @@ namespace lch_taskbar
         {
           Margin = new Thickness(-5, 0, -3, 2)
         },
-        "everything" => new EverythingControl()
-        {
-          Margin = new Thickness(0, 0, 0, 2)
-        },
         "network" => new NetworkControl()
         {
           Margin = new Thickness(0, -1, 0, 0)
@@ -80,7 +76,7 @@ namespace lch_taskbar
         {
           Margin = new Thickness(0, -3, 0, 0)
         },
-        "weather" => new WeatherControl()
+        "weather" => new WeatherControl(options)
         {
           Margin = new Thickness(0, -3, 0, 0)
         },

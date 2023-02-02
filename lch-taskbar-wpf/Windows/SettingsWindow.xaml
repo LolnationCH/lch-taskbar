@@ -66,35 +66,9 @@
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto"/>
               <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
               <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1">
-              <Grid>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="Auto"/>
-                  <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="Auto"/>
-                  <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Weather location :" Style="{StaticResource TextBlockStyle}"/>
-                <TextBox Grid.Column="1" Text="{Binding WeatherLocation}" Style="{StaticResource TBQuestionStyle}"/>
-                <TextBlock Grid.Column="2" Text="Weather unit :" Style="{StaticResource TextBlockStyle}"/>
-                <TextBox Grid.Column="3" Text="{Binding WeatherUnit}" Style="{StaticResource TBQuestionStyle}"/>
-              </Grid>
-            </Border>
-            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-              <Grid>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="Auto"/>
-                  <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Everything path :" Style="{StaticResource TextBlockStyle}"/>
-                <TextBox Grid.Column="1" Text="{Binding EverythingPath}" Style="{StaticResource TBQuestionStyle}"/>
-              </Grid>
-            </Border>
-            <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1">
               <Grid>
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto"/>
@@ -112,7 +86,7 @@
                 <xctk:ColorPicker Grid.Column="5" Name="ClrPcker_FontColor" SelectedColorChanged="ClrPcker_FontColor_SelectedColorChanged" Margin="5,2,2,2"/>
               </Grid>
             </Border>
-            <Border Grid.Row="3" BorderBrush="Black" BorderThickness="1">
+            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
               <Grid>
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto"/>

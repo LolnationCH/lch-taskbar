@@ -1,5 +1,4 @@
-﻿using lch_configuration.ComponentOptions;
-using lch_configuration.Configuration;
+﻿using lch_configuration.Configuration;
 using lch_taskbar.Utils;
 using lch_taskbar_wpf.Utils;
 using lch_taskbar_wpf.Windows.Settings;

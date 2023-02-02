@@ -28,7 +28,6 @@ namespace lch_configuration.Configuration
           ComponentFactory.CreateComponentFromName("processes")!,
           ComponentFactory.CreateComponentFromName("weather")!,
           ComponentFactory.CreateComponentFromName("spotify")!,
-          ComponentFactory.CreateComponentFromName("processes")!,
           new Component() {Name = "shortcuts", Options = new ShortcutDatas(){
             Data = new()
             {
@@ -63,7 +62,6 @@ namespace lch_configuration.Configuration
         {
           ComponentFactory.CreateComponentFromName("volume")!,
           ComponentFactory.CreateComponentFromName("bluetooth")!,
-          ComponentFactory.CreateComponentFromName("everything")!,
           ComponentFactory.CreateComponentFromName("network")!,
           ComponentFactory.CreateComponentFromName("time")!,
         };

@@ -35,9 +35,6 @@
     <Resource Include="Ressources\ethernet.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Ressources\everything.png">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Ressources\spotify_icon.png" />
     <Resource Include="Ressources\wifi.png" />
   </ItemGroup>
