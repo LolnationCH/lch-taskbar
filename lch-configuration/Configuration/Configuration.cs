@@ -21,6 +21,11 @@ namespace lch_configuration.Configuration
     {
       ConfigurationData.ComponentList.SetAsDefault();
     }
+
+    public void SetComponents(Components components)
+    {
+      GetData.ComponentList = components;
+    }
     
     public void Save()
     {

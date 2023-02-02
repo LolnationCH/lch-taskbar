@@ -35,7 +35,13 @@
     <Compile Update="TaskbarComponents\WeatherControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\Settings.xaml.cs">
+    <Compile Update="Windows\SettingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\ComponentContainer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\ComponentLine.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -73,7 +79,13 @@
     <Page Update="TaskbarComponents\WeatherControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\Settings.xaml">
+    <Page Update="Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ComponentContainer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ComponentLine.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

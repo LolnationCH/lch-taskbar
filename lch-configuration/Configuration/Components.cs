@@ -25,10 +25,11 @@ namespace lch_configuration.Configuration
       if (LeftComponents.Count == 0)
         return new List<Component>()
         {
-          new Component() {Name = "processes" },
-          new Component() {Name = "weather" },
-          new Component() {Name = "spotify" },
-          new Component() {Name = "shortcut", Options = new ShortcutDatas(){
+          ComponentFactory.CreateComponentFromName("processes")!,
+          ComponentFactory.CreateComponentFromName("weather")!,
+          ComponentFactory.CreateComponentFromName("spotify")!,
+          ComponentFactory.CreateComponentFromName("processes")!,
+          new Component() {Name = "shortcuts", Options = new ShortcutDatas(){
             Data = new()
             {
               {
@@ -50,7 +51,7 @@ namespace lch_configuration.Configuration
       if (MiddleComponents.Count == 0)
         return new List<Component>()
         {
-          new Component() {Name = "title" },
+          ComponentFactory.CreateComponentFromName("title")!,
         };
       return MiddleComponents;
     }
@@ -60,11 +61,11 @@ namespace lch_configuration.Configuration
       if (RightComponents.Count == 0)
         return new List<Component>()
         {
-          new Component() {Name = "volume" },
-          new Component() {Name = "bluetooth" },
-          new Component() {Name = "everything" },
-          new Component() {Name = "network" },
-          new Component() {Name = "time" },
+          ComponentFactory.CreateComponentFromName("volume")!,
+          ComponentFactory.CreateComponentFromName("bluetooth")!,
+          ComponentFactory.CreateComponentFromName("everything")!,
+          ComponentFactory.CreateComponentFromName("network")!,
+          ComponentFactory.CreateComponentFromName("time")!,
         };
       return RightComponents;
     }

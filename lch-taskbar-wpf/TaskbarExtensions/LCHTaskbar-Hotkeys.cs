@@ -55,7 +55,7 @@ namespace lch_taskbar
           Close();
           break;
         case (int)GlobalHotkeys.VK.KEY_I:
-          var settings = new lch_taskbar_wpf.Windows.Settings();
+          var settings = new lch_taskbar_wpf.Windows.SettingsWindow();
           settings.ShowDialog();
           Reload();
           break;

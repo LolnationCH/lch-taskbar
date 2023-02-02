@@ -26,13 +26,20 @@ namespace lch_configuration.Configuration
       return optionsByComponentName;
     }
 
-    public static Component CreateComponentFromName(string name)
+    public static Component? CreateComponentFromName(string? name)
     {
+      if (name == null)
+        return null;
+      
       if (optionsByComponentName.ContainsKey(name))
-      {
         return new Component() { Name = name, Options = optionsByComponentName[name] };
-      }
-      return new Component() { Name = name, Options = null };
+      
+      return null;
+    }
+
+    public static Component? CreateComponentFromNameAndOptions(string? name, IComponentOptions? options)
+    {
+      return new Component() { Name = name, Options = options };
     }
   }
 }

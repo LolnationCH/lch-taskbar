@@ -2,29 +2,29 @@
 using lch_configuration.Configuration;
 using lch_taskbar.Utils;
 using lch_taskbar_wpf.Utils;
+using lch_taskbar_wpf.Windows.Settings;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using static System.Windows.Forms.Design.AxImporter;
 
 namespace lch_taskbar_wpf.Windows
 {
-  public partial class Settings : Window
+  public partial class SettingsWindow : Window
   {
     public static readonly RoutedCommand SaveCommand = new();
     private readonly List<string> FontSizeSource = FontUtils.GetFontSize();
     private readonly List<string> FontFamilySource = FontUtils.GetFontFamilies();
     private TabItem? ComponentTabSelected;
     
-    private static readonly Dictionary<string, IComponentOptions?> componentsOptionDic = ComponentFactory.GetOptionsByComponentName();
-    private static readonly List<string> componentsName = new(componentsOptionDic.Keys);
+    private static readonly List<string> componentsName = new(ComponentFactory.GetOptionsByComponentName().Keys);
 
-    public Settings()
+    public SettingsWindow()
     {
       InitializeComponent();
       SetupComboBoxSource();
       DataContext = Configuration.GetInstance().GetData;
+      SetComponents();
       SaveCommand.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
     }
 
@@ -36,11 +36,32 @@ namespace lch_taskbar_wpf.Windows
       ClrPcker_FontColor.SelectedColor = (Color)ColorConverter.ConvertFromString(Configuration.GetInstance().GetData.FontColor);
     }
 
+    private Components GetComponents()
+    {
+      return new()
+      {
+        LeftComponents = LeftSide.GetComponents(),
+        MiddleComponents = MiddleSide.GetComponents(),
+        RightComponents = RightSide.GetComponents(),
+      };
+    }
+
+    private void SetComponents()
+    {
+      if (DataContext is ConfigurationData newConfig)
+      {
+        LeftSide.SetComponents(newConfig.ComponentList.LeftComponents);
+        MiddleSide.SetComponents(newConfig.ComponentList.MiddleComponents);
+        RightSide.SetComponents(newConfig.ComponentList.RightComponents);
+      }
+    }
+
     private void Save_Click(object sender, RoutedEventArgs e)
     {
       if (DataContext is ConfigurationData newConfig)
       {
         Configuration.GetInstance().SetData(newConfig);
+        Configuration.GetInstance().SetComponents(GetComponents());
         Configuration.GetInstance().Save();
       }
       Close();
@@ -74,55 +95,9 @@ namespace lch_taskbar_wpf.Windows
 
     private void AddComponent_Click(object sender, RoutedEventArgs e)
     {
-      var sp = ComponentTabSelected?.Content;
-      if (sp is StackPanel)
-      {
-        var newSp = new StackPanel(){
-          Orientation = Orientation.Horizontal,
-          Margin = new Thickness(0, 0, 0, 5)
-        };
-        var newComponent = new ComboBox
-        {
-          ItemsSource = componentsName,
-          MinWidth = 200,
-        };
-        newComponent.SelectionChanged += Component_SelectionChanged;
-        newSp.Children.Add(newComponent);
-        (sp as StackPanel)!.Children.Add(newSp);
-      }
-    }
-
-    private void Component_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-      var selection = (sender as ComboBox)!.SelectedItem.ToString();
-      if (selection != null && componentsOptionDic.ContainsKey(selection))
-      {
-        var options = componentsOptionDic[selection];
-        if (options == null)
-          return;
-
-        var sp = (sender as ComboBox)!.Parent! as StackPanel;
-        var editButton = new Button()
-        {
-          Content = "Edit",
-          Margin = new Thickness(5, 0, 0, 0),
-          Tag = options,
-        };
-        editButton.Click += EditButton_Click;
-        sp!.Children.Add(editButton);
-      }
-    }
-
-    private void EditButton_Click(object sender, RoutedEventArgs e)
-    {
-      var options = (sender as Button)!.Tag as IComponentOptions;
-      if (options == null)
-        return;
-      
-      var type = options.GetType();
-      var properties = type.GetProperties();
-
-      // TODO : Make a window by type of options
+      var componentContainer = ComponentTabSelected?.Content;
+      if (componentContainer is ComponentContainer)
+        (componentContainer as ComponentContainer)!.AddComponentLine();
     }
   }
 }
