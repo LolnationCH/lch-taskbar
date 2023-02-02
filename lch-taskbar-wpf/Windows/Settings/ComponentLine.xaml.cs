@@ -10,6 +10,7 @@ namespace lch_taskbar_wpf.Windows.Settings
   {
     private static readonly List<string> componentsName = new(ComponentFactory.GetOptionsByComponentName().Keys);
     private string? currentSelection;
+    private IComponentOptions? currentOptions;
     private readonly ComponentContainer parent;
 
     public ComponentLine(ComponentContainer parent)
@@ -54,25 +55,27 @@ namespace lch_taskbar_wpf.Windows.Settings
           EditButton.IsEnabled = true;
         else
           EditButton.IsEnabled = false;
-        EditButton.Tag = options;
+        currentOptions = options;
       }
     }
 
     private void EditButton_Click(object sender, RoutedEventArgs e)
     {
-      var options = (IComponentOptions)EditButton.Tag;
-      switch(options)
+      if (currentOptions is null)
+        return;
+      
+      switch (currentOptions)
       {
         case ShortcutDatas shortcutDatas:
           // var window = new ShortcutDatasWindow(options as ShortcutDatas);
           // window.ShowDialog();
           break;
         default:
-          // var dynamicWindow = new DynamicOptionsWindow(options);
-          // dynamicWindow.ShowDialog();
+          var dynamicWindow = new DynamicSettingsWindow(currentOptions);
+          dynamicWindow.ShowDialog();
+          currentOptions = dynamicWindow.GetComponentOptions();
           break;
       }
-      EditButton.Tag = options;
     }
   }
 }

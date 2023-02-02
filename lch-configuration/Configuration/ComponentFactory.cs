@@ -17,7 +17,7 @@ namespace lch_configuration.Configuration
         {"spotify", null},
         { "time", null},
         { "date", null},
-        { "weather", null},
+        { "weather", new WeatherOptions()},
         { "title", null},
       };
     
