@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace lch_taskbar_wpf.TaskbarComponents
+namespace lch_taskbar.TaskbarComponents
 {
   public partial class WeatherControl : System.Windows.Controls.Button
     {
@@ -32,7 +32,7 @@ namespace lch_taskbar_wpf.TaskbarComponents
       Dispatcher.Invoke(() =>
       {
         TimeLabel.Content = WeatherUtils.GetWeather();
-        ToolTip = Configuration.Configuration.GetInstance().GetData.WeatherLocation;
+        ToolTip = lch_configuration.Configuration.Configuration.GetInstance().GetData.WeatherLocation;
       });
     }
 

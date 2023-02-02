@@ -1,4 +1,4 @@
-﻿namespace lch_taskbar_wpf.Configuration
+﻿namespace lch_configuration.Configuration
 {
   public interface IConfigurationPreference
   {

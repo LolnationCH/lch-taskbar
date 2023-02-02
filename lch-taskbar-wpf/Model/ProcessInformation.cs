@@ -1,4 +1,6 @@
-﻿namespace lch_taskbar_wpf
+﻿using System.Drawing;
+
+namespace lch_taskbar
 {
   public class ProcessInformation
   {

@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace lch_taskbar_wpf.TaskbarComponents
+namespace lch_taskbar.TaskbarComponents
 {
   public partial class TimeControl : System.Windows.Controls.Button, ICustomButton
     {

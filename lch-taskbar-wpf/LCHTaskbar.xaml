@@ -1,10 +1,10 @@
-﻿<Window x:Class="lch_taskbar_wpf.LCHTaskbar"
+﻿<Window x:Class="lch_taskbar.LCHTaskbar"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:lch_taskbar_wpf"
-        xmlns:cc="clr-namespace:lch_taskbar_wpf.TaskbarComponents"
+        xmlns:local="clr-namespace:lch_taskbar"
+        xmlns:cc="clr-namespace:lch_taskbar.TaskbarComponents"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -24,7 +24,7 @@
     </Grid.ColumnDefinitions>
     <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0">
     </StackPanel>
-    <StackPanel x:Name="middleSP" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+    <StackPanel x:Name="middleSP" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
     </StackPanel>
 
     <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">

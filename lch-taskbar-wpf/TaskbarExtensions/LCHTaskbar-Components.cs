@@ -1,17 +1,19 @@
-﻿using lch_taskbar_wpf.TaskbarComponents;
+﻿using lch_configuration.ComponentOptions;
+using lch_configuration.Configuration;
+using lch_taskbar.TaskbarComponents;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace lch_taskbar_wpf
+namespace lch_taskbar
 {
   public partial class LCHTaskbar
-  {
+  {    
     public void SetupComponents()
     {
       RemoveAllComponents();
-      Configuration.Configuration.GetInstance().GetData.ComponentList.GetLeftComponents().ForEach(x => AddComponent(x, leftSP));
-      Configuration.Configuration.GetInstance().GetData.ComponentList.GetMiddleComponents().ForEach(x => AddComponent(x, middleSP));
-      Configuration.Configuration.GetInstance().GetData.ComponentList.GetRightComponents().ForEach(x => AddComponent(x, rightSP));
+      Configuration.GetInstance().GetData.ComponentList.GetLeftComponents().ForEach(x => AddComponent(x, leftSP));
+      Configuration.GetInstance().GetData.ComponentList.GetMiddleComponents().ForEach(x => AddComponent(x, middleSP));
+      Configuration.GetInstance().GetData.ComponentList.GetRightComponents().ForEach(x => AddComponent(x, rightSP));
     }
     public void SetCurrentProcessTitle(string title)
     {
@@ -31,18 +33,19 @@ namespace lch_taskbar_wpf
       rightSP.Children.Clear();
     }
 
-    private static void AddComponent(string elementName, StackPanel stackPanel)
+    private static void AddComponent(Component element, StackPanel stackPanel)
     {
-      var element = GetComponentsByName(elementName);
-      if (element == null)
+      var uIElement = GetComponentsByName(element.Name, element.Options);
+      if (uIElement == null)
         return;
       
-      stackPanel.Children.Add(element);
+      stackPanel.Children.Add(uIElement);
     }
 
-    private static UIElement? GetComponentsByName(string name)
+    private static UIElement? GetComponentsByName(string? name, IComponentOptions? options)
     {
-      return name.ToLower() switch
+      // Modify this snippet from lch-taskbar\TaskbarComponents\ComponentsDictionary.cs:
+      return name?.ToLower() switch
       {
         "bluetooth" => new BluetoothControl()
         {
@@ -64,6 +67,10 @@ namespace lch_taskbar_wpf
         "volume" or "sound" => new SoundControl()
         {
           Margin = new Thickness(0, -5, 0, -2)
+        },
+        "shortcuts" => new ShortcutsControl(options)
+        {
+          Margin = new Thickness(0, -2, 0, 0)
         },
         "spotify" => new SpotifyControl()
         {

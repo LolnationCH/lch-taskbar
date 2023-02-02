@@ -17,6 +17,12 @@
     <Compile Update="TaskbarComponents\ProcessControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="TaskbarComponents\ShortcutControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TaskbarComponents\ShortcutsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TaskbarComponents\SoundControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +33,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="TaskbarComponents\WeatherControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -46,6 +55,12 @@
     <Page Update="TaskbarComponents\ProcessControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="TaskbarComponents\ShortcutControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaskbarComponents\ShortcutsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="TaskbarComponents\SoundControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -56,6 +71,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\WeatherControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

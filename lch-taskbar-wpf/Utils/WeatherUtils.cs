@@ -1,4 +1,4 @@
-﻿using lch_taskbar_wpf.Configuration;
+﻿using lch_configuration.Configuration;
 using System.Net.Http;
 
 public static class WeatherUtils
@@ -22,8 +22,8 @@ public static class WeatherUtils
   private static (string,string) GetWeatherParameters()
   {
     string location = Configuration.GetInstance().GetData.WeatherLocation;
-    string unit = Configuration.GetInstance().GetData.WeatherUnit;
-    if (unit == "Metric")
+    string unit = Configuration.GetInstance().GetData.WeatherUnit.ToLower();
+    if (unit == "metric")
       unit = "m";
     else
       unit = "u";

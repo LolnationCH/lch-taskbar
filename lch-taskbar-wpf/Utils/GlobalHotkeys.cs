@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace lch_taskbar_wpf
+namespace lch_taskbar
 {
   public static class GlobalHotkeys
   {

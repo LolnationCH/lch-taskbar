@@ -1,10 +1,11 @@
-﻿using System.Diagnostics;
+﻿using lch_taskbar.Utils;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace lch_taskbar_wpf.TaskbarComponents
+namespace lch_taskbar.TaskbarComponents
 {
   public partial class ProcessControl : StackPanel
   {

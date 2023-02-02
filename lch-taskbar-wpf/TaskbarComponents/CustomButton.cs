@@ -1,4 +1,4 @@
-﻿namespace lch_taskbar_wpf.TaskbarComponents
+﻿namespace lch_taskbar.TaskbarComponents
 {
   public interface ICustomButton
   {

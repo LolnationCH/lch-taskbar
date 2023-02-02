@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace lch_taskbar_wpf.TaskbarComponents
+namespace lch_taskbar.TaskbarComponents
 {
   public partial class EverythingControl : System.Windows.Controls.Button, ICustomButton
   {
@@ -13,7 +13,7 @@ namespace lch_taskbar_wpf.TaskbarComponents
 
     public void CustomButton_Click(object sender, RoutedEventArgs e)
     {
-      System.Diagnostics.Process.Start(Configuration.Configuration.GetInstance().GetData.EverythingPath);
+      System.Diagnostics.Process.Start(lch_configuration.Configuration.Configuration.GetInstance().GetData.EverythingPath);
     }
 
     public void Refresh()
