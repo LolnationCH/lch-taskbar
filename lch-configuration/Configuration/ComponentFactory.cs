@@ -12,7 +12,7 @@ namespace lch_configuration.Configuration
         {"processes", null},
         {"volume", null},
         {"sound", null},
-        {"shortcuts" , new ShortcutDatas()},
+        {"shortcuts" , new ShortcutOptions()},
         {"spotify", null},
         { "time", null},
         { "date", null},

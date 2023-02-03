@@ -3,7 +3,7 @@
 namespace lch_configuration.ComponentOptions
 {
   [JsonObject]
-  public class ShortcutDatas : IComponentOptions
+  public class ShortcutOptions : IComponentOptions
   {
     [JsonProperty]
     public List<ShortcutData> Data { get; set; } = new();

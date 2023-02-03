@@ -41,7 +41,16 @@
     <Compile Update="Windows\Settings\ComponentLine.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\Settings\DynamicOptionContainer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\Settings\DynamicSettingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\ShortcutDataLine.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\ShortcutOptionsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -85,7 +94,16 @@
     <Page Update="Windows\Settings\ComponentLine.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Windows\Settings\DynamicOptionContainer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Windows\Settings\DynamicSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ShortcutDataLine.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ShortcutOptionsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

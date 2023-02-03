@@ -7,8 +7,14 @@ public static class WeatherUtils
     units = ParseUnits(units);
     var url = $"https://wttr.in/{location}?format=3&{units}";
     using var client = new HttpClient();
-    var result = client.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-    return result;
+
+    var response = client.GetAsync(url).Result;
+    if (response.IsSuccessStatusCode)
+    {
+      var content = response.Content.ReadAsStringAsync().Result;
+      return content;
+    }
+    return $"Error getting weather for {location}";
   }
 
   public static string GettWeatherViewingUrl(string location, string units)

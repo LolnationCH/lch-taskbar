@@ -28,19 +28,7 @@ namespace lch_configuration.Configuration
           ComponentFactory.CreateComponentFromName("processes")!,
           ComponentFactory.CreateComponentFromName("weather")!,
           ComponentFactory.CreateComponentFromName("spotify")!,
-          new Component() {Name = "shortcuts", Options = new ShortcutDatas(){
-            Data = new()
-            {
-              {
-                new ShortcutData()
-              {
-               Name = "Discord",
-              Path = "%appdata%\\Discord\\Update.exe",
-              Arguments = "--processStart Discord.exe",
-              IconPath = "%appdata%\\..\\Local\\Discord\\app.ico"
-              } }
-            }
-          } },
+          ComponentFactory.CreateComponentFromName("shortcuts")!,
         };
       return LeftComponents;
     }

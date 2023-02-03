@@ -66,9 +66,10 @@ namespace lch_taskbar_wpf.Windows.Settings
       
       switch (currentOptions)
       {
-        case ShortcutDatas shortcutDatas:
-          // var window = new ShortcutDatasWindow(options as ShortcutDatas);
-          // window.ShowDialog();
+        case ShortcutOptions shortcutOptions:
+          var window = new ShortcutOptionsWindow(shortcutOptions);
+          window.ShowDialog();
+          currentOptions = window.GetShortcutOptions();
           break;
         default:
           var dynamicWindow = new DynamicSettingsWindow(currentOptions);

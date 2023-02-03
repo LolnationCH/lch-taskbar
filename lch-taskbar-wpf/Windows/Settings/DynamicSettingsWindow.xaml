@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:lch_taskbar_wpf.Windows.Settings"
         mc:Ignorable="d"
         Title="DynamicSettingsWindow" Height="450" Width="800">
-  <StackPanel x:Name="MainContainer" Margin="5,5,5,5">
-
-  </StackPanel>
+  <StackPanel x:Name="MainContainer" Margin="5"/>
 </Window>

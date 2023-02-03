@@ -5,13 +5,13 @@ namespace lch_taskbar.TaskbarComponents
 {
   public partial class ShortcutsControl : StackPanel
   {
-    private readonly ShortcutDatas shortcutDatas = new();
+    private readonly ShortcutOptions shortcutDatas = new();
     public ShortcutsControl(IComponentOptions? componentOptions)
     {
       InitializeComponent();
       
       if (componentOptions != null)
-        shortcutDatas = (ShortcutDatas)componentOptions;
+        shortcutDatas = (ShortcutOptions)componentOptions;
       
       Refresh();
     }
