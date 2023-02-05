@@ -6,7 +6,6 @@
     <Application.Resources>
     <Style x:Key="ButtonWithNoOver" TargetType="Button">
       <Setter Property="OverridesDefaultStyle" Value="True"/>
-      <Setter Property="Margin" Value="5"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
