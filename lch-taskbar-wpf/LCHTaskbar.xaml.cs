@@ -2,10 +2,12 @@
 using System.Windows.Interop;
 using System.Windows.Threading;
 using System.Windows.Media;
+using System.Linq;
 using lch_taskbar.Utils;
 using lch_taskbar.TaskbarComponents;
 using System.Windows;
 using lch_configuration.Configuration;
+using System.Windows.Controls;
 
 namespace lch_taskbar
 {
@@ -39,22 +41,31 @@ namespace lch_taskbar
       LiveTime.Start();
     }
 
-    private void ControlsTimer_Tick(object? sender, EventArgs e)
+    private void RefreshChildrenCustomButton(UIElementCollection children)
     {
-      foreach (var control in leftSP.Children)
+      foreach (var control in children)
       {
-        if (control is TaskbarComponents.ICustomButton)
+        if (control is TaskbarComponents.ICustomButton customButton)
         {
-          (control as TaskbarComponents.ICustomButton)!.Refresh();
+          customButton.Refresh();
         }
       }
-      
-      foreach (var control in rightSP.Children)
+    }
+
+    private void ControlsTimer_Tick(object? sender, EventArgs e)
+    {
+      if (Configuration.GetInstance().GetData.Position == TaskbarPosition.Top ||
+          Configuration.GetInstance().GetData.Position == TaskbarPosition.Bottom)
       {
-        if (control is TaskbarComponents.ICustomButton)
-        {
-          (control as TaskbarComponents.ICustomButton)!.Refresh();
-        }
+        RefreshChildrenCustomButton(leftSP.Children);
+        RefreshChildrenCustomButton(middleSP.Children);
+        RefreshChildrenCustomButton(rightSP.Children);
+      }
+      else
+      {
+        RefreshChildrenCustomButton(topSP.Children);
+        RefreshChildrenCustomButton(centerSP.Children);
+        RefreshChildrenCustomButton(bottomSP.Children);
       }
     }
 
@@ -168,21 +179,9 @@ namespace lch_taskbar
       lch_configuration.Configuration.Configuration.GetInstance().Reload();
       
       Setup();
-      var configuredLabels = WindowUtils.FindVisualChilds<ConfiguredLabel>(this);
-      foreach (var label in configuredLabels)
-      {
-        label.Refresh();
-      }
-      var weatherControls = WindowUtils.FindVisualChilds<WeatherControl>(this);
-      foreach (var weatherControl in weatherControls)
-      {
-        weatherControl.Refresh();
-      }
-      var shortcutsControls = WindowUtils.FindVisualChilds<ShortcutsControl>(this);
-      foreach (var shortcutControl in shortcutsControls)
-      {
-        shortcutControl.Refresh();
-      }      
+      WindowUtils.FindVisualChilds<ConfiguredLabel>(this).ToList().ForEach(x => x.Refresh());
+      WindowUtils.FindVisualChilds<WeatherControl>(this).ToList().ForEach(x => x.Refresh());
+      WindowUtils.FindVisualChilds<ShortcutsControl>(this).ToList().ForEach(x => x.Refresh());
     }
 
     protected override void OnClosing(CancelEventArgs e)
