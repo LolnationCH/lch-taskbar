@@ -21,7 +21,9 @@
 
     <Button Grid.Row="1" x:Name="AddComponentButton" Click="AddComponentButton_Click" Content="Add Component" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
 
-    <StackPanel x:Name="MainContainer"  Grid.Row="2" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
+    <ScrollViewer Grid.Row="2" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+      <StackPanel x:Name="MainContainer" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
+    </ScrollViewer>
 
   </Grid>
 </Window>

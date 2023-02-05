@@ -43,7 +43,8 @@ namespace lch_taskbar_wpf.Windows.Settings
         var textBox = new TextBox
         {
           Margin = new Thickness(5),
-          HorizontalAlignment = HorizontalAlignment.Stretch
+          HorizontalAlignment = HorizontalAlignment.Stretch,
+          MinWidth = 100,          
         };
         textBox.SetBinding(TextBox.TextProperty, new Binding(property.Name) { Source = _componentOptions });
         Grid.SetColumn(textBox, 1);
