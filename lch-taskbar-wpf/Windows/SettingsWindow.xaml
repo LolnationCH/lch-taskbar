@@ -97,9 +97,9 @@
                   <ColumnDefinition Width="Auto"/>
                   <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Opacity of taskbar :" Style="{StaticResource TextBlockStyle}"/>
+                <TextBlock Text="Opacity of taskbar (in %) :" Style="{StaticResource TextBlockStyle}" />
                 <TextBox Grid.Column="1" Text="{Binding Opacity}" Style="{StaticResource TBQuestionStyle}"/>
-                <TextBlock Grid.Column="2" Text="Font Color :" Style="{StaticResource TextBlockStyle}"/>
+                <TextBlock Grid.Column="2" Text="Taskbar Background Color :" Style="{StaticResource TextBlockStyle}"/>
                 <xctk:ColorPicker Grid.Column="3" Name="ClrPcker_Background" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Margin="5,2,2,2"/>
                 <TextBlock Text="Taskbar position" Grid.Column="4" Style="{StaticResource TextBlockStyle}"/>
                 <ComboBox Grid.Column="5"  ItemsSource="{Binding Source={StaticResource taskbarPosition}}" SelectedItem="{Binding Position, Mode=TwoWay}" Style="{StaticResource CBQuestionStyle}"/>
