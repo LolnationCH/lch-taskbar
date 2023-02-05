@@ -1,7 +1,7 @@
-﻿<Application x:Class="lch_taskbar_wpf.App"
+﻿<Application x:Class="lch_taskbar.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:lch_taskbar_wpf"
+             xmlns:local="clr-namespace:lch_taskbar"
              StartupUri="LCHTaskbar.xaml">
     <Application.Resources>
     <Style x:Key="ButtonWithNoOver" TargetType="Button">

@@ -1,7 +1,7 @@
-﻿using lch_taskbar_wpf.TaskbarComponents;
+﻿using lch_taskbar.TaskbarComponents;
 using System.Windows.Interop;
 
-namespace lch_taskbar_wpf
+namespace lch_taskbar
 {
   public partial class LCHTaskbar : System.Windows.Window
   {
@@ -24,6 +24,7 @@ namespace lch_taskbar_wpf
       GlobalHotkeys.RegisterHotKey(handle, GlobalHotkeys.HOTKEY_ID, GlobalHotkeys.MOD_HYPER, (uint)GlobalHotkeys.VK.KEY_R);
       GlobalHotkeys.RegisterHotKey(handle, GlobalHotkeys.HOTKEY_ID, GlobalHotkeys.MOD_HYPER, (uint)GlobalHotkeys.VK.KEY_G);
       GlobalHotkeys.RegisterHotKey(handle, GlobalHotkeys.HOTKEY_ID, GlobalHotkeys.MOD_HYPER, (uint)GlobalHotkeys.VK.KEY_C);
+      GlobalHotkeys.RegisterHotKey(handle, GlobalHotkeys.HOTKEY_ID, GlobalHotkeys.MOD_HYPER, (uint)GlobalHotkeys.VK.KEY_I);
 
       GlobalHotkeys.RegisterHotKey(handle, GlobalHotkeys.HOTKEY_ID, GlobalHotkeys.MOD_HYPER, (uint)GlobalHotkeys.VK.KEY_1);
       GlobalHotkeys.RegisterHotKey(handle, GlobalHotkeys.HOTKEY_ID, GlobalHotkeys.MOD_HYPER, (uint)GlobalHotkeys.VK.KEY_2);
@@ -52,6 +53,11 @@ namespace lch_taskbar_wpf
           break;
         case (int)GlobalHotkeys.VK.KEY_C:
           Close();
+          break;
+        case (int)GlobalHotkeys.VK.KEY_I:
+          var settings = new lch_taskbar_wpf.Windows.SettingsWindow();
+          settings.ShowDialog();
+          Reload();
           break;
         case (int)GlobalHotkeys.VK.KEY_1:
         case (int)GlobalHotkeys.VK.KEY_2:

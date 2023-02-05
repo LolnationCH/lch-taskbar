@@ -3,7 +3,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace lch_taskbar_wpf.TaskbarComponents
+namespace lch_taskbar.TaskbarComponents
 {
   public partial class SpotifyControl : System.Windows.Controls.Button, ICustomButton
     {

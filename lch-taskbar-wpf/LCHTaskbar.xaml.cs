@@ -2,10 +2,11 @@
 using System.Windows.Interop;
 using System.Windows.Threading;
 using System.Windows.Media;
-using lch_taskbar_wpf.Utils;
-using lch_taskbar_wpf.TaskbarComponents;
+using lch_taskbar.Utils;
+using lch_taskbar.TaskbarComponents;
+using System.Windows;
 
-namespace lch_taskbar_wpf
+namespace lch_taskbar
 {
   public partial class LCHTaskbar : System.Windows.Window
   {
@@ -58,8 +59,8 @@ namespace lch_taskbar_wpf
 
     private static (string, double) GetBackgroundColorConfiguration()
     {
-      return (Configuration.Configuration.GetInstance().GetData.BackgroundColor,
-              Double.Parse(Configuration.Configuration.GetInstance().GetData.Opacity));
+      return (lch_configuration.Configuration.Configuration.GetInstance().GetData.BackgroundColor,
+              Double.Parse(lch_configuration.Configuration.Configuration.GetInstance().GetData.Opacity));
     }
     
     private void SetupTaskbarStyle()
@@ -121,7 +122,8 @@ namespace lch_taskbar_wpf
 
     private void Reload()
     {
-      Configuration.Configuration.GetInstance().Reload();
+      lch_configuration.Configuration.Configuration.GetInstance().Reload();
+      
       Setup();
       var configuredLabels = WindowUtils.FindVisualChilds<ConfiguredLabel>(this);
       foreach (var label in configuredLabels)
@@ -133,10 +135,16 @@ namespace lch_taskbar_wpf
       {
         weatherControl.Refresh();
       }
+      var shortcutsControls = WindowUtils.FindVisualChilds<ShortcutsControl>(this);
+      foreach (var shortcutControl in shortcutsControls)
+      {
+        shortcutControl.Refresh();
+      }      
     }
 
     protected override void OnClosing(CancelEventArgs e)
     {
+      lch_configuration.Configuration.Configuration.GetInstance().Save();
       WindowsTaskbar.Show();
       base.OnClosing(e);
     }

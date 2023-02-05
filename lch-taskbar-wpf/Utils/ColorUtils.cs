@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace lch_taskbar_wpf.Utils
+namespace lch_taskbar.Utils
 {
   public static class ColorUtils
   {
@@ -11,12 +11,18 @@ namespace lch_taskbar_wpf.Utils
 
     public static SolidColorBrush? GetSolidColorBrushFromHex(string hex, double opacity)
     {
-      var color = new BrushConverter().ConvertFrom(hex) as SolidColorBrush;
-      if (color == null)
+      if (new BrushConverter().ConvertFrom(hex) is not SolidColorBrush color)
         return null;
 
       color.Opacity = opacity / 100;
       return color;
+    }
+    public static string GetHexColor(Color? color)
+    {
+      if (color == null)
+        return "#000000";
+
+      return $"#{color.Value.R:X2}{color.Value.G:X2}{color.Value.B:X2}";
     }
   }
 }

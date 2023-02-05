@@ -8,13 +8,16 @@
     <Compile Update="TaskbarComponents\BluetoothControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="TaskbarComponents\EverythingControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="TaskbarComponents\NetworkControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="TaskbarComponents\ProcessControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TaskbarComponents\ShortcutControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TaskbarComponents\ShortcutsControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="TaskbarComponents\SoundControl.xaml.cs">
@@ -29,6 +32,27 @@
     <Compile Update="TaskbarComponents\WeatherControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\SettingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\ComponentContainer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\ComponentLine.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\DynamicOptionContainer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\DynamicSettingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\ShortcutDataLine.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\ShortcutOptionsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="TaskbarComponents\ConfiguredLabel.xaml">
@@ -37,13 +61,16 @@
     <Page Update="TaskbarComponents\BluetoothControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="TaskbarComponents\EverythingControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="TaskbarComponents\NetworkControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\ProcessControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaskbarComponents\ShortcutControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaskbarComponents\ShortcutsControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\SoundControl.xaml">
@@ -56,6 +83,27 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\WeatherControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ComponentContainer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ComponentLine.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\DynamicOptionContainer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\DynamicSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ShortcutDataLine.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ShortcutOptionsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

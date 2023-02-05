@@ -1,7 +1,7 @@
 ﻿using System.Net.NetworkInformation;
 using System.Windows;
 
-namespace lch_taskbar_wpf.TaskbarComponents
+namespace lch_taskbar.TaskbarComponents
 {
   public partial class NetworkControl : System.Windows.Controls.Button, ICustomButton
   {

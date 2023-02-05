@@ -1,12 +1,15 @@
-﻿using System.Windows.Controls;
+﻿using lch_configuration.ComponentOptions;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace lch_taskbar_wpf.TaskbarComponents
+namespace lch_taskbar.TaskbarComponents
 {
   public partial class WeatherControl : System.Windows.Controls.Button
     {
-    public WeatherControl()
-    {
+    private readonly WeatherOptions options;
+    public WeatherControl(IComponentOptions options)
+    {;
+      this.options = (options as WeatherOptions)!;
       InitializeComponent();
       SetupWeather();
       SetWeather();
@@ -31,8 +34,8 @@ namespace lch_taskbar_wpf.TaskbarComponents
     {
       Dispatcher.Invoke(() =>
       {
-        TimeLabel.Content = WeatherUtils.GetWeather();
-        ToolTip = Configuration.Configuration.GetInstance().GetData.WeatherLocation;
+        TimeLabel.Content = WeatherUtils.GetWeather(options.location, options.units);
+        ToolTip = options.location;
       });
     }
 
@@ -44,7 +47,7 @@ namespace lch_taskbar_wpf.TaskbarComponents
     private void WeatherButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {
       var process = new System.Diagnostics.Process();
-      process.StartInfo.FileName = WeatherUtils.GettWeatherViewingUrl();
+      process.StartInfo.FileName = WeatherUtils.GettWeatherViewingUrl(options.location, options.units);
       process.StartInfo.UseShellExecute = true;
       process.Start();
     }

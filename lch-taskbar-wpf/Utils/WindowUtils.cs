@@ -24,7 +24,7 @@ public static class WindowUtils
 
   public static void RemoveFromAltTab(IntPtr Handle)
   {
-    //Make it gone frmo the ALT+TAB
+    //Make it gone from the ALT+TAB
     int windowStyle = GetWindowLong(Handle, GWL_EXSTYLE);
     SetWindowLong(Handle, GWL_EXSTYLE, windowStyle | WS_EX_TOOLWINDOW);
 

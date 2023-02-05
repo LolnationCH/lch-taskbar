@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Automation;
 
-namespace lch_taskbar_wpf
+namespace lch_taskbar
 {
   public partial class App : System.Windows.Application
   {
@@ -15,7 +15,7 @@ namespace lch_taskbar_wpf
       worker.RunWorkerAsync();
 
       // Just get the instance to load the config
-      Configuration.Configuration.GetInstance();
+      lch_configuration.Configuration.Configuration.GetInstance();
     }
 
     private void Worker_DoWork(object? sender, DoWorkEventArgs e)

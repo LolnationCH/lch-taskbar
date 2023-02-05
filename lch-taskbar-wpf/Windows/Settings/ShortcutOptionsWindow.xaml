@@ -1,0 +1,29 @@
+﻿<Window x:Class="lch_taskbar_wpf.Windows.Settings.ShortcutOptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lch_taskbar_wpf.Windows.Settings"
+        mc:Ignorable="d"
+        Title="ShortcutOptionsWindow" Height="450" Width="800">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="10"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="10"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="10"/>
+      <RowDefinition Height="30"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="10"/>
+    </Grid.RowDefinitions>
+
+    <Button Grid.Row="1" x:Name="AddComponentButton" Click="AddComponentButton_Click" Content="Add Component" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
+
+    <ScrollViewer Grid.Row="2" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+      <StackPanel x:Name="MainContainer" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
+    </ScrollViewer>
+
+  </Grid>
+</Window>
