@@ -26,8 +26,15 @@ namespace lch_taskbar.Utils
       var process = Process.GetProcessById((int)lpdwProcessId);
       Icon? icon = null;
 
-      if (process.MainModule != null)
-        icon = IconFromFilePath(process.MainModule.FileName);
+      try
+      {
+        if (process.MainModule != null)
+          icon = IconFromFilePath(process.MainModule.FileName);
+      }
+      catch
+      {
+        return null;
+      }
 
       return icon;
     }
