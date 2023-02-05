@@ -11,9 +11,19 @@ namespace lch_taskbar
     public void SetupComponents()
     {
       RemoveAllComponents();
-      Configuration.GetInstance().GetData.ComponentList.GetLeftComponents().ForEach(x => AddComponent(x, leftSP));
-      Configuration.GetInstance().GetData.ComponentList.GetMiddleComponents().ForEach(x => AddComponent(x, middleSP));
-      Configuration.GetInstance().GetData.ComponentList.GetRightComponents().ForEach(x => AddComponent(x, rightSP));
+      if (Configuration.GetInstance().GetData.Position == TaskbarPosition.Top ||
+          Configuration.GetInstance().GetData.Position == TaskbarPosition.Bottom)
+      {
+        Configuration.GetInstance().GetData.ComponentList.GetLeftComponents().ForEach(x => AddComponent(x, leftSP));
+        Configuration.GetInstance().GetData.ComponentList.GetMiddleComponents().ForEach(x => AddComponent(x, middleSP));
+        Configuration.GetInstance().GetData.ComponentList.GetRightComponents().ForEach(x => AddComponent(x, rightSP));
+      }
+      else
+      {
+        Configuration.GetInstance().GetData.ComponentList.GetLeftComponents().ForEach(x => AddComponent(x, topSP));
+        Configuration.GetInstance().GetData.ComponentList.GetMiddleComponents().ForEach(x => AddComponent(x, middleSP));
+        Configuration.GetInstance().GetData.ComponentList.GetRightComponents().ForEach(x => AddComponent(x, bottomSP));
+      }
     }
     public void SetCurrentProcessTitle(string title)
     {
@@ -31,6 +41,10 @@ namespace lch_taskbar
       leftSP.Children.Clear();
       middleSP.Children.Clear();
       rightSP.Children.Clear();
+
+      topSP.Children.Clear();
+      centerSP.Children.Clear();
+      bottomSP.Children.Clear();
     }
 
     private static void AddComponent(Component element, StackPanel stackPanel)

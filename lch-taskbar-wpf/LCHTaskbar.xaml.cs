@@ -5,6 +5,7 @@ using System.Windows.Media;
 using lch_taskbar.Utils;
 using lch_taskbar.TaskbarComponents;
 using System.Windows;
+using lch_configuration.Configuration;
 
 namespace lch_taskbar
 {
@@ -23,7 +24,7 @@ namespace lch_taskbar
     {
       SetupComponents();
       WindowsTaskbar.Hide();
-      SetTaskbarToMonitorSize();
+      SetTaskbarPosition();
       SetupDispatcherTimer();
       SetupTaskbarStyle();
     }
@@ -86,13 +87,55 @@ namespace lch_taskbar
       }
     }
 
-    private void SetTaskbarToMonitorSize()
+    private void SetTaskbarPosition()
     {
+      var position = lch_configuration.Configuration.Configuration.GetInstance().GetData.Position;
+
+      if (position == TaskbarPosition.Top ||
+          position == TaskbarPosition.Bottom)
+      {
+        SetTaskbarToMonitorSizeHorizontal();
+      }
+      else
+      {
+        SetTaskbarToMonitorSizeVertical();
+      }
+
+      switch (position)
+      {
+        case TaskbarPosition.Top:
+          Top = 0;
+          break;
+        case TaskbarPosition.Bottom:
+          Top = SystemParameters.PrimaryScreenHeight - Height;
+          break;
+        case TaskbarPosition.Left:
+          Left = 0;
+          break;
+        case TaskbarPosition.Right:
+          Left = SystemParameters.PrimaryScreenWidth - Width;
+          break;
+      }
+    }
+
+    private void SetTaskbarToMonitorSizeHorizontal()
+    {
+      Height = 22;
       Width = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds.Width;
       var widthColumn = Width / 3;
       Column1.Width = new System.Windows.GridLength(widthColumn);
       Column2.Width = new System.Windows.GridLength(widthColumn);
       Column3.Width = new System.Windows.GridLength(widthColumn);
+    }
+
+    private void SetTaskbarToMonitorSizeVertical()
+    {
+      Width = 22;
+      Height = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds.Height;
+      var heightRow = Height / 3;
+      Row1.Height = new System.Windows.GridLength(heightRow);
+      Row2.Height = new System.Windows.GridLength(heightRow);
+      Row3.Height = new System.Windows.GridLength(heightRow);
     }
 
     private List<ProcessControl> GetProcessControls()
