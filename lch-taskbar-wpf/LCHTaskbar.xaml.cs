@@ -2,7 +2,6 @@
 using System.Windows.Interop;
 using System.Windows.Threading;
 using System.Windows.Media;
-using System.Linq;
 using lch_taskbar.Utils;
 using lch_taskbar.TaskbarComponents;
 using System.Windows;
@@ -116,14 +115,18 @@ namespace lch_taskbar
       {
         case TaskbarPosition.Top:
           Top = 0;
+          Left = 0;
           break;
         case TaskbarPosition.Bottom:
           Top = SystemParameters.PrimaryScreenHeight - Height;
+          Left = 0;
           break;
         case TaskbarPosition.Left:
+          Top = 0;
           Left = 0;
           break;
         case TaskbarPosition.Right:
+          Top = 0;
           Left = SystemParameters.PrimaryScreenWidth - Width;
           break;
       }
@@ -137,6 +140,9 @@ namespace lch_taskbar
       Column1.Width = new System.Windows.GridLength(widthColumn);
       Column2.Width = new System.Windows.GridLength(widthColumn);
       Column3.Width = new System.Windows.GridLength(widthColumn);
+      Row1.Height = new System.Windows.GridLength(1, GridUnitType.Star);
+      Row2.Height = new System.Windows.GridLength(1, GridUnitType.Star);
+      Row3.Height = new System.Windows.GridLength(1, GridUnitType.Star);
     }
 
     private void SetTaskbarToMonitorSizeVertical()
@@ -147,6 +153,9 @@ namespace lch_taskbar
       Row1.Height = new System.Windows.GridLength(heightRow);
       Row2.Height = new System.Windows.GridLength(heightRow);
       Row3.Height = new System.Windows.GridLength(heightRow);
+      Column1.Width = new System.Windows.GridLength(1, GridUnitType.Star);
+      Column2.Width = new System.Windows.GridLength(1, GridUnitType.Star);
+      Column3.Width = new System.Windows.GridLength(1, GridUnitType.Star);
     }
 
     private List<ProcessControl> GetProcessControls()
