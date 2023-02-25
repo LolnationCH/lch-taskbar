@@ -3,6 +3,7 @@
   public class ConfigurationData : IConfigurationAppearance
   {
     #region ConfigurationAppearance
+    public int TaskbarSize { get; set; } = 22;
     public string FontSize { get; set; } = "10";
     public string FontFamily { get; set; } = "Arial";
     public string FontColor { get; set; } = "#FFFFFF";

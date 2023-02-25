@@ -134,7 +134,7 @@ namespace lch_taskbar
 
     private void SetTaskbarToMonitorSizeHorizontal()
     {
-      Height = 22;
+      Height = lch_configuration.Configuration.Configuration.GetInstance().GetData.TaskbarSize;
       Width = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds.Width;
       var widthColumn = Width / 3;
       Column1.Width = new System.Windows.GridLength(widthColumn);
@@ -147,7 +147,7 @@ namespace lch_taskbar
 
     private void SetTaskbarToMonitorSizeVertical()
     {
-      Width = 22;
+      Width = lch_configuration.Configuration.Configuration.GetInstance().GetData.TaskbarSize;
       Height = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds.Height;
       var heightRow = Height / 3;
       Row1.Height = new System.Windows.GridLength(heightRow);
