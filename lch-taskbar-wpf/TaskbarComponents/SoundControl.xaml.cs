@@ -19,7 +19,7 @@ namespace lch_taskbar.TaskbarComponents
       var enumerator = new MMDeviceEnumerator();
       var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Console);
       var volume = device.AudioEndpointVolume.MasterVolumeLevelScalar * 100;
-      OutputDeviceLabel.Content = $"{device.FriendlyName} - ({volume:0})%";
+      OutputDeviceLabel.Text = $"{device.FriendlyName} - ({volume:0})%";
     }
 
     public void CustomButton_Click(object sender, RoutedEventArgs e)

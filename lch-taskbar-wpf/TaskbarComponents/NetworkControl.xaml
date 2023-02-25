@@ -14,6 +14,6 @@
     </Grid.ColumnDefinitions>
     <Image x:Name="internetIcon" Source="/Ressources/wifi.png" Height="15" Width="15"/>
 
-    <local:ConfiguredLabel x:Name="internetLabel" Content="WifiName" Grid.Column="1" VerticalAlignment="Center" Margin="0,-2, 0, 0"/>
+    <local:ConfiguredTextBlock x:Name="internetLabel" Text="WifiName" Grid.Column="1" VerticalAlignment="Center" Margin="0,-2, 0, 0"/>
   </Grid>
 </Button>

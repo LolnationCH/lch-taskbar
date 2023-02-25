@@ -19,7 +19,7 @@ namespace lch_taskbar.TaskbarComponents
       var title = SpotifyUtils.GetSpotifyTitle();
       Dispatcher.Invoke(() =>
       {
-        Spotify.Content = title;
+        Spotify.Text = title;
         Spotify.ToolTip = title;
       });
     }

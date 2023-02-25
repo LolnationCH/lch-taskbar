@@ -34,7 +34,7 @@ namespace lch_taskbar.TaskbarComponents
     {
       Dispatcher.Invoke(() =>
       {
-        TimeLabel.Content = WeatherUtils.GetWeather(options.location, options.units);
+        TimeLabel.Text = WeatherUtils.GetWeather(options.location, options.units);
         ToolTip = options.location;
       });
     }

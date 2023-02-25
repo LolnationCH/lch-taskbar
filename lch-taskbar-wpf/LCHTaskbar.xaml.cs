@@ -188,7 +188,7 @@ namespace lch_taskbar
       lch_configuration.Configuration.Configuration.GetInstance().Reload();
       
       Setup();
-      WindowUtils.FindVisualChilds<ConfiguredLabel>(this).ToList().ForEach(x => x.Refresh());
+      WindowUtils.FindVisualChilds<ConfiguredTextBlock>(this).ToList().ForEach(x => x.Refresh());
       WindowUtils.FindVisualChilds<WeatherControl>(this).ToList().ForEach(x => x.Refresh());
       WindowUtils.FindVisualChilds<ShortcutsControl>(this).ToList().ForEach(x => x.Refresh());
     }
