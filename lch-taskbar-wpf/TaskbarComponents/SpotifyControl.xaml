@@ -8,15 +8,15 @@
              BorderThickness="0"
              Background="Transparent"
              d:Background="Black"
-             VerticalAlignment="Top"
+             VerticalAlignment="Center"
              Style="{StaticResource ButtonWithNoOver}"
              d:DesignHeight="15" d:DesignWidth="800">
     <Grid>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20"/>
+      <ColumnDefinition Width="Auto"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <Image x:Name="SpotifyIcon" Height="15" Source="/Ressources/spotify_icon.png"/>
-    <local:ConfiguredTextBlock x:Name="Spotify" Text="Title" Grid.Column="1" VerticalAlignment="Center" Margin="0,-1,0,0"/>
+    <Image x:Name="SpotifyIcon" Source="/Ressources/spotify_icon.png" Margin="5" MaxHeight="25"/>
+    <local:ConfiguredTextBlock x:Name="Spotify" Text="Title" Grid.Column="1" VerticalAlignment="Center" Margin="1,0,0,0"/>
   </Grid>
 </Button>

@@ -160,7 +160,7 @@ namespace lch_taskbar
 
     private List<ProcessControl> GetProcessControls()
     {
-      return WindowUtils.FindVisualChilds<ProcessControl>(this).Where(x => x.Name == "ProcessControl").ToList();
+      return WindowUtils.FindVisualChilds<ProcessControl>(this).ToList();
     }
     
     public void Refresh(string title)

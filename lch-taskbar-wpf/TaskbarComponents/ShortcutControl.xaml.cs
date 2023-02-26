@@ -26,8 +26,8 @@ namespace lch_taskbar.TaskbarComponents
         Image Icon = new()
         {
           Tag = _shortcutData.Path,
-          MaxWidth = 12,
-          MaxHeight = 12,
+          MaxWidth = 25,
+          MaxHeight = 25,
           ToolTip = _shortcutData.Name,
         };
         

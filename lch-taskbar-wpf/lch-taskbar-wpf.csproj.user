@@ -2,7 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="TaskbarComponents\ConfiguredLabel.xaml.cs">
+    <Compile Update="TaskbarComponents\ConfiguredTextBlock.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="TaskbarComponents\BluetoothControl.xaml.cs">
@@ -55,7 +55,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="TaskbarComponents\ConfiguredLabel.xaml">
+    <Page Update="TaskbarComponents\ConfiguredTextBlock.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\BluetoothControl.xaml">

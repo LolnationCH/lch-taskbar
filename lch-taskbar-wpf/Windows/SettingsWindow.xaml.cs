@@ -84,6 +84,14 @@ namespace lch_taskbar_wpf.Windows
 
     private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
     {
+      object focusObj = FocusManager.GetFocusedElement(FocusManager.GetFocusScope(this));
+      if (focusObj != null && focusObj is TextBox)
+      {
+        var binding = ((TextBox)focusObj).GetBindingExpression(TextBox.TextProperty);
+        binding.UpdateSource();
+      }
+
+
       Save_Click(sender, e);
     }
 

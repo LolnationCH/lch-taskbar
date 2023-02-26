@@ -12,7 +12,6 @@ namespace lch_taskbar.TaskbarComponents
       this.options = (options as WeatherOptions)!;
       InitializeComponent();
       SetupWeather();
-      SetWeather();
     }
     private void SetupWeather()
     {

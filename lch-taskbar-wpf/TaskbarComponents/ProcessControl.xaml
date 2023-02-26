@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:lch_taskbar.TaskbarComponents"
              mc:Ignorable="d"
              Orientation="Horizontal"
-             VerticalAlignment="Top"
+             VerticalAlignment="Center"
              d:DesignHeight="450" d:DesignWidth="800">
     
 </StackPanel>

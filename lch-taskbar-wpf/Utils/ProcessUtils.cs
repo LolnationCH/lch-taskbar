@@ -64,6 +64,21 @@ namespace lch_taskbar.Utils
       return processInformation;
     }
 
+    public static List<ProcessInformation> GetAllUniqueProcessInformation()
+    {
+      return GetAllProcessInformation().GroupBy(x => GetProcessFileName(x.ProcessHwnd)).Select(x => x.First()).ToList();
+    }
+
+    private static string? GetProcessFileName(nint Hwnd)
+    {
+      var _ = GetWindowThreadProcessId(Hwnd, out uint lpdwProcessId);
+      if (lpdwProcessId == 0)
+        return null;
+
+      var process = Process.GetProcessById((int)lpdwProcessId);
+      return process.MainModule?.FileName;
+    }
+
     public static Icon? IconFromFilePath(string filePath)
     {
       Icon? result = null;

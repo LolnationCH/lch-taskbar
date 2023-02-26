@@ -17,7 +17,7 @@ namespace lch_taskbar.TaskbarComponents
 
     public void Refresh()
     {
-      var process = ProcessUtils.GetAllProcessInformation().OrderBy(x => x.ProcessName);
+      var process = ProcessUtils.GetAllUniqueProcessInformation().OrderBy(x => x.ProcessName);
       var icons = process.Select(x => CreateIconForProcess(x));
       Dispatcher.Invoke(() =>
       {
@@ -48,8 +48,8 @@ namespace lch_taskbar.TaskbarComponents
       {
         Source = Imaging.CreateBitmapSourceFromHIcon(processInformation.ProcessIcon!.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()),
         Tag = processInformation,
-        Width = 12,
-        Height = 12,
+        MaxWidth = 25,
+        MaxHeight = 25,
         Margin = new Thickness(5),
         ToolTip = processInformation.ProcessName,
       };

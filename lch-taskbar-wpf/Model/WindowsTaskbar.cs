@@ -7,23 +7,11 @@ public static class WindowsTaskbar
       string lpClassName,
       string lpWindowName);
 
+  // import the stuff to hide the window
   [DllImport("user32.dll", SetLastError = true)]
-  private static extern int SetWindowPos(
-      IntPtr hWnd,
-      IntPtr hWndInsertAfter,
-      int x,
-      int y,
-      int cx,
-      int cy,
-      uint uFlags
-  );
-
-  [Flags]
-  private enum SetWindowPosFlags : uint
-  {
-    HideWindow = 128,
-    ShowWindow = 64
-  }
+  static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+  const int SW_HIDE = 0;
+  const int SW_SHOW = 5;
 
   private const string taskbarClassName = "Shell_TrayWnd";
   private const string taskbarSecondaryClassName = "Shell_SecondaryTrayWnd";
@@ -34,8 +22,8 @@ public static class WindowsTaskbar
   {
     var window = FindWindow(taskbarClassName, "");
     var secondWindow = FindWindow(taskbarSecondaryClassName, "");
-    SetWindowPos(window, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.ShowWindow);
-    SetWindowPos(secondWindow, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.ShowWindow);
+    ShowWindow(window, SW_SHOW);
+    ShowWindow(secondWindow, SW_SHOW);
     _isHidden = false;
   }
 
@@ -43,10 +31,8 @@ public static class WindowsTaskbar
   {
     var window = FindWindow(taskbarClassName, "");
     var secondWindow = FindWindow(taskbarSecondaryClassName, "");
-    SetWindowPos(window, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.ShowWindow);
-    SetWindowPos(secondWindow, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.ShowWindow);
-    SetWindowPos(window, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.HideWindow);
-    SetWindowPos(secondWindow, IntPtr.Zero, 0, 0, 0, 0, (uint)SetWindowPosFlags.HideWindow);
+    ShowWindow(window, SW_HIDE);
+    ShowWindow(secondWindow, SW_HIDE);
     _isHidden = true;
   }
 
@@ -57,5 +43,4 @@ public static class WindowsTaskbar
     else
       Hide();
   }
-
 }
