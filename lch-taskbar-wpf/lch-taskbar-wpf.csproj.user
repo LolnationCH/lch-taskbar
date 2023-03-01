@@ -11,6 +11,9 @@
     <Compile Update="TaskbarComponents\NetworkControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="TaskbarComponents\ProcessButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TaskbarComponents\ProcessControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -62,6 +65,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\NetworkControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaskbarComponents\ProcessButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\ProcessControl.xaml">
