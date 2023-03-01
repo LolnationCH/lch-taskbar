@@ -15,6 +15,7 @@
         Background="Transparent"
         AllowsTransparency="True"
         d:Width="1900"
+        Icon="/app_icon.png"
         Left="0" Top="0">
   <Grid>
     <Grid.ColumnDefinitions>
