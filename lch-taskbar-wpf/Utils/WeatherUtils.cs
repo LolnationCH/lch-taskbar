@@ -5,13 +5,13 @@ public static class WeatherUtils
   public static string GetWeather(string location, string units)
   {
     units = ParseUnits(units);
-    var url = $"https://wttr.in/{location}?format=3&{units}";
+    var url = $"https://wttr.in/{location}?format=\"%l:+%t\\n\"&{units}";
     using var client = new HttpClient();
 
     var response = client.GetAsync(url).Result;
     if (response.IsSuccessStatusCode)
     {
-      var content = response.Content.ReadAsStringAsync().Result;
+      var content = response.Content.ReadAsStringAsync().Result.Replace("\"","");
       return content;
     }
     return $"Error getting weather for {location}";
