@@ -14,8 +14,8 @@ namespace lch_configuration.Configuration
         {"sound", null},
         {"shortcuts" , new ShortcutOptions()},
         {"spotify", null},
-        { "time", null},
-        { "date", null},
+        { "time", new TimeOptions()},
+        { "date", new TimeOptions()},
         { "weather", new WeatherOptions()},
         { "title", null},
       };

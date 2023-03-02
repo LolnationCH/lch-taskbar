@@ -67,7 +67,7 @@ namespace lch_taskbar
         "volume" or "sound" => new SoundControl(),
         "shortcuts" => new ShortcutsControl(options),
         "spotify" => new SpotifyControl(),
-        "time" or "date" => new TimeControl(),
+        "time" or "date" => new TimeControl(options!),
         "weather" => new WeatherControl(options!),
         "title" => new ConfiguredTextBlock()
         {
