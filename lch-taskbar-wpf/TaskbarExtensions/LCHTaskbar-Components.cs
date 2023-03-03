@@ -64,7 +64,7 @@ namespace lch_taskbar
         "bluetooth" => new BluetoothControl(),
         "network" => new NetworkControl(),
         "process" or "processes" => new ProcessControl(),
-        "volume" or "sound" => new SoundControl(),
+        "volume" or "sound" => new SoundControl(options),
         "shortcuts" => new ShortcutsControl(options),
         "spotify" => new SpotifyControl(),
         "time" or "date" => new TimeControl(options!),

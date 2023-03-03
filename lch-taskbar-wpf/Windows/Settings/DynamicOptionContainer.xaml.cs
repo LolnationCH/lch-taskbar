@@ -40,6 +40,17 @@ namespace lch_taskbar_wpf.Windows.Settings
         comboBox.SetBinding(Selector.SelectedValueProperty, new Binding(property.Name) { Source = _componentOptions });
         return comboBox;
       }
+      else if (property.PropertyType.Name == "Boolean")
+      {
+        var checkbox = new CheckBox()
+        {
+          Margin = new Thickness(5),
+          HorizontalAlignment = HorizontalAlignment.Stretch,
+          MinWidth = 100,
+        };
+        checkbox.SetBinding(ToggleButton.IsCheckedProperty, new Binding(property.Name) { Source = _componentOptions });
+        return checkbox;
+      }
       else
       {
         var textBox = new TextBox
@@ -59,7 +70,7 @@ namespace lch_taskbar_wpf.Windows.Settings
       type.GetProperties().ToList().ForEach(property =>
       {
         var grid = new Grid();
-        grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(100, GridUnitType.Pixel) });
+        grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(150, GridUnitType.Pixel) });
         grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 
         var label = new Label

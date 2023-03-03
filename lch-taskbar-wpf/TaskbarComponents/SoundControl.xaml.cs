@@ -1,4 +1,5 @@
-﻿using NAudio.CoreAudioApi;
+﻿using lch_configuration.ComponentOptions;
+using NAudio.CoreAudioApi;
 using System.Data;
 using System.Windows;
 using System.Windows.Threading;
@@ -7,19 +8,35 @@ namespace lch_taskbar.TaskbarComponents
 {
   public partial class SoundControl : System.Windows.Controls.Button, ICustomButton
     {
-    public SoundControl()
+    SoundOptions soundOptions = new();
+    public SoundControl(IComponentOptions? options)
     {
+      if (options != null)
+        soundOptions = (SoundOptions)options;
+      
       InitializeComponent();
       Refresh();
       Click += CustomButton_Click;
     }
 
+    private string GetText()
+    {
+      string text = "";
+      MMDeviceEnumerator enumerator = new MMDeviceEnumerator();
+      MMDevice device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+      if (soundOptions.ShowMute)
+        text += (device.AudioEndpointVolume.Mute ? "🔇" : soundOptions.ShowIcon? "🔈": "") + " ";
+      else if (soundOptions.ShowIcon)
+        text += "🔊 ";
+
+      if (soundOptions.TextFormat != "")
+        text += soundOptions.TextFormat.Replace("{device}", device.FriendlyName).Replace("{volume}", (device.AudioEndpointVolume.MasterVolumeLevelScalar * 100).ToString("0"));
+      return text;
+    }
+
     public void Refresh()
     {
-      var enumerator = new MMDeviceEnumerator();
-      var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Console);
-      var volume = device.AudioEndpointVolume.MasterVolumeLevelScalar * 100;
-      OutputDeviceLabel.Text = $"{device.FriendlyName} - ({volume:0})%";
+      OutputDeviceLabel.Text = GetText();
     }
 
     public void CustomButton_Click(object sender, RoutedEventArgs e)
