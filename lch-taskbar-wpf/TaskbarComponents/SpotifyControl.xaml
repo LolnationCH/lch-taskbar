@@ -16,7 +16,7 @@
       <ColumnDefinition Width="Auto"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <Image x:Name="SpotifyIcon" Source="/Ressources/spotify_icon.png" Margin="5" MaxHeight="25"/>
+    <Image x:Name="SpotifyIcon" Source="/Ressources/spotify_icon.png" Margin="0,-1,5,0" MaxHeight="25" MinHeight="15"/>
     <local:ConfiguredTextBlock x:Name="Spotify" Text="Title" Grid.Column="1" VerticalAlignment="Center" Margin="1,0,0,0"/>
   </Grid>
 </Button>
