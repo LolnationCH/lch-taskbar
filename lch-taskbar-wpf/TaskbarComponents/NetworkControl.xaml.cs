@@ -34,11 +34,11 @@ namespace lch_taskbar.TaskbarComponents
         if (string.IsNullOrEmpty(signal))
           return;
 
-        internetLabel.Content = $"{SSID} ({signal})";
+        internetLabel.Text = $"{SSID} ({signal})";
         return;
       }
 
-      internetLabel.Content = interfaceName;
+      internetLabel.Text = interfaceName;
       internetIcon.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Ressources/ethernet.png", UriKind.Relative));
       
     }

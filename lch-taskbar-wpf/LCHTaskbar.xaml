@@ -15,19 +15,26 @@
         Background="Transparent"
         AllowsTransparency="True"
         d:Width="1900"
+        Icon="/app_icon.png"
         Left="0" Top="0">
   <Grid>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition x:Name="Column1" Width="200"/>
+      <ColumnDefinition x:Name="Column1" Width="*"/>
       <ColumnDefinition x:Name="Column2" Width="*"/>
-      <ColumnDefinition x:Name="Column3" Width="200"/>
+      <ColumnDefinition x:Name="Column3" Width="*"/>
     </Grid.ColumnDefinitions>
-    <StackPanel x:Name="leftSP" Orientation="Horizontal" Grid.Column="0">
-    </StackPanel>
-    <StackPanel x:Name="middleSP" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
-    </StackPanel>
+    <Grid.RowDefinitions>
+      <RowDefinition x:Name="Row1" Height="*"/>
+      <RowDefinition x:Name="Row2" Height="*"/>
+      <RowDefinition x:Name="Row3" Height="*"/>
+    </Grid.RowDefinitions>
 
-    <StackPanel x:Name="rightSP" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-    </StackPanel>
+    <StackPanel x:Name="leftSP"   Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left"   VerticalAlignment="Stretch" Grid.RowSpan="3"/>
+    <StackPanel x:Name="middleSP" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.RowSpan="3"/>
+    <StackPanel x:Name="rightSP"  Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Stretch" Grid.RowSpan="3"/>
+
+    <StackPanel x:Name="topSP"    Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top"    Grid.ColumnSpan="3"/>
+    <StackPanel x:Name="centerSP" Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
+    <StackPanel x:Name="bottomSP" Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="3"/>
   </Grid>
 </Window>

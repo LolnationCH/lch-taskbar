@@ -5,14 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:lch_taskbar.TaskbarComponents"
              mc:Ignorable="d" 
+             Margin="0,2,0,2"
              Style="{StaticResource ButtonWithNoOver}"
-             d:DesignHeight="20" d:DesignWidth="800">
+             d:DesignHeight="22" d:DesignWidth="800">
     <Grid>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20"/>
+      <ColumnDefinition Width="Auto"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <Image x:Name="internetIcon" Source="/Ressources/wifi.png" Height="15"/>
-    <local:ConfiguredLabel x:Name="internetLabel" Content="WifiName" Grid.Column="1" VerticalAlignment="Center" Margin="0,-2, 0, 0"/>
+    <Image x:Name="internetIcon" Source="/Ressources/wifi.png" MaxHeight="25" MaxWidth="25"/>
+
+    <local:ConfiguredTextBlock x:Name="internetLabel" Text="WifiName" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0"/>
   </Grid>
 </Button>

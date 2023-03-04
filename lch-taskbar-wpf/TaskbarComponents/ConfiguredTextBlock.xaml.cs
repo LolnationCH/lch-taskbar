@@ -3,9 +3,9 @@ using System.Windows.Controls;
 
 namespace lch_taskbar.TaskbarComponents
 {
-  public partial class ConfiguredLabel : System.Windows.Controls.Label
-    {
-    public ConfiguredLabel()
+  public partial class ConfiguredTextBlock : System.Windows.Controls.TextBlock
+  {
+    public ConfiguredTextBlock()
     {
       InitializeComponent();
       SetupLabel();

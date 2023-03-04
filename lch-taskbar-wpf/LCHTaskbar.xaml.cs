@@ -5,6 +5,8 @@ using System.Windows.Media;
 using lch_taskbar.Utils;
 using lch_taskbar.TaskbarComponents;
 using System.Windows;
+using lch_configuration.Configuration;
+using System.Windows.Controls;
 
 namespace lch_taskbar
 {
@@ -23,7 +25,7 @@ namespace lch_taskbar
     {
       SetupComponents();
       WindowsTaskbar.Hide();
-      SetTaskbarToMonitorSize();
+      SetTaskbarPosition();
       SetupDispatcherTimer();
       SetupTaskbarStyle();
     }
@@ -38,22 +40,31 @@ namespace lch_taskbar
       LiveTime.Start();
     }
 
-    private void ControlsTimer_Tick(object? sender, EventArgs e)
+    private void RefreshChildrenCustomButton(UIElementCollection children)
     {
-      foreach (var control in leftSP.Children)
+      foreach (var control in children)
       {
-        if (control is TaskbarComponents.ICustomButton)
+        if (control is TaskbarComponents.ICustomButton customButton)
         {
-          (control as TaskbarComponents.ICustomButton)!.Refresh();
+          customButton.Refresh();
         }
       }
-      
-      foreach (var control in rightSP.Children)
+    }
+
+    private void ControlsTimer_Tick(object? sender, EventArgs e)
+    {
+      if (Configuration.GetInstance().GetData.Position == TaskbarPosition.Top ||
+          Configuration.GetInstance().GetData.Position == TaskbarPosition.Bottom)
       {
-        if (control is TaskbarComponents.ICustomButton)
-        {
-          (control as TaskbarComponents.ICustomButton)!.Refresh();
-        }
+        RefreshChildrenCustomButton(leftSP.Children);
+        RefreshChildrenCustomButton(middleSP.Children);
+        RefreshChildrenCustomButton(rightSP.Children);
+      }
+      else
+      {
+        RefreshChildrenCustomButton(topSP.Children);
+        RefreshChildrenCustomButton(centerSP.Children);
+        RefreshChildrenCustomButton(bottomSP.Children);
       }
     }
 
@@ -86,18 +97,70 @@ namespace lch_taskbar
       }
     }
 
-    private void SetTaskbarToMonitorSize()
+    private void SetTaskbarPosition()
     {
+      var position = lch_configuration.Configuration.Configuration.GetInstance().GetData.Position;
+
+      if (position == TaskbarPosition.Top ||
+          position == TaskbarPosition.Bottom)
+      {
+        SetTaskbarToMonitorSizeHorizontal();
+      }
+      else
+      {
+        SetTaskbarToMonitorSizeVertical();
+      }
+
+      switch (position)
+      {
+        case TaskbarPosition.Top:
+          Top = 0;
+          Left = 0;
+          break;
+        case TaskbarPosition.Bottom:
+          Top = SystemParameters.PrimaryScreenHeight - Height;
+          Left = 0;
+          break;
+        case TaskbarPosition.Left:
+          Top = 0;
+          Left = 0;
+          break;
+        case TaskbarPosition.Right:
+          Top = 0;
+          Left = SystemParameters.PrimaryScreenWidth - Width;
+          break;
+      }
+    }
+
+    private void SetTaskbarToMonitorSizeHorizontal()
+    {
+      Height = lch_configuration.Configuration.Configuration.GetInstance().GetData.TaskbarSize;
       Width = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds.Width;
       var widthColumn = Width / 3;
       Column1.Width = new System.Windows.GridLength(widthColumn);
       Column2.Width = new System.Windows.GridLength(widthColumn);
       Column3.Width = new System.Windows.GridLength(widthColumn);
+      Row1.Height = new System.Windows.GridLength(1, GridUnitType.Star);
+      Row2.Height = new System.Windows.GridLength(1, GridUnitType.Star);
+      Row3.Height = new System.Windows.GridLength(1, GridUnitType.Star);
+    }
+
+    private void SetTaskbarToMonitorSizeVertical()
+    {
+      Width = lch_configuration.Configuration.Configuration.GetInstance().GetData.TaskbarSize;
+      Height = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(this).Handle).Bounds.Height;
+      var heightRow = Height / 3;
+      Row1.Height = new System.Windows.GridLength(heightRow);
+      Row2.Height = new System.Windows.GridLength(heightRow);
+      Row3.Height = new System.Windows.GridLength(heightRow);
+      Column1.Width = new System.Windows.GridLength(1, GridUnitType.Star);
+      Column2.Width = new System.Windows.GridLength(1, GridUnitType.Star);
+      Column3.Width = new System.Windows.GridLength(1, GridUnitType.Star);
     }
 
     private List<ProcessControl> GetProcessControls()
     {
-      return WindowUtils.FindVisualChilds<ProcessControl>(this).Where(x => x.Name == "ProcessControl").ToList();
+      return WindowUtils.FindVisualChilds<ProcessControl>(this).ToList();
     }
     
     public void Refresh(string title)
@@ -125,21 +188,9 @@ namespace lch_taskbar
       lch_configuration.Configuration.Configuration.GetInstance().Reload();
       
       Setup();
-      var configuredLabels = WindowUtils.FindVisualChilds<ConfiguredLabel>(this);
-      foreach (var label in configuredLabels)
-      {
-        label.Refresh();
-      }
-      var weatherControls = WindowUtils.FindVisualChilds<WeatherControl>(this);
-      foreach (var weatherControl in weatherControls)
-      {
-        weatherControl.Refresh();
-      }
-      var shortcutsControls = WindowUtils.FindVisualChilds<ShortcutsControl>(this);
-      foreach (var shortcutControl in shortcutsControls)
-      {
-        shortcutControl.Refresh();
-      }      
+      WindowUtils.FindVisualChilds<ConfiguredTextBlock>(this).ToList().ForEach(x => x.Refresh());
+      WindowUtils.FindVisualChilds<WeatherControl>(this).ToList().ForEach(x => x.Refresh());
+      WindowUtils.FindVisualChilds<ShortcutsControl>(this).ToList().ForEach(x => x.Refresh());
     }
 
     protected override void OnClosing(CancelEventArgs e)

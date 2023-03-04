@@ -8,10 +8,10 @@ using System.Windows.Media.Imaging;
 
 namespace lch_taskbar.TaskbarComponents
 {
-    public partial class ShortcutControl : Button
+  public partial class ShortcutControl : Button
   {
     private readonly ShortcutData _shortcutData;
-    
+
     public ShortcutControl(ShortcutData shortcutData)
     {
       InitializeComponent();
@@ -26,12 +26,11 @@ namespace lch_taskbar.TaskbarComponents
         Image Icon = new()
         {
           Tag = _shortcutData.Path,
-          Width = 12,
-          Height = 12,
-          Margin = new Thickness(5),
+          MaxWidth = 25,
+          MaxHeight = 25,
           ToolTip = _shortcutData.Name,
         };
-        
+
         if (_shortcutData.IconPath != null)
         {
           if (System.IO.File.Exists(_shortcutData.IconPath))

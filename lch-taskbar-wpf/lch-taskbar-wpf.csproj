@@ -7,9 +7,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Ressources\app_icon.ico</ApplicationIcon>
+    <PackageIcon>app_icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="app_icon.png" />
     <None Remove="TaskbarComponents\bluetoothOff.png" />
     <None Remove="TaskbarComponents\bluetoothOn.png" />
     <None Remove="TaskbarComponents\ethernet.png" />
@@ -19,9 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Ressources\app_icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
     <PackageReference Include="InTheHand.Net.Bluetooth" Version="4.0.33.1" />
     <PackageReference Include="NAudio" Version="2.1.0" />
+    <PackageReference Include="System.Management" Version="7.0.0" />
   </ItemGroup>
   
   <ItemGroup>
@@ -30,6 +38,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="app_icon.png" />
+    <Resource Include="Ressources\app_icon.png" />
     <Resource Include="Ressources\bluetoothOff.png" />
     <Resource Include="Ressources\bluetoothOn.png" />
     <Resource Include="Ressources\ethernet.png">
@@ -37,6 +47,13 @@
     </Resource>
     <Resource Include="Ressources\spotify_icon.png" />
     <Resource Include="Ressources\wifi.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Ressources\app_icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

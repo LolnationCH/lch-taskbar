@@ -1,26 +1,27 @@
 ﻿using lch_configuration.ComponentOptions;
+using lch_taskbar_wpf.Utils;
 using System.Windows.Controls;
 
 namespace lch_taskbar.TaskbarComponents
 {
-  public partial class ShortcutsControl : StackPanel
+  public partial class ShortcutsControl : Border
   {
-    private readonly ShortcutOptions shortcutDatas = new();
+    private readonly ShortcutOptions shortcutOptions = new();
     public ShortcutsControl(IComponentOptions? componentOptions)
     {
       InitializeComponent();
       
       if (componentOptions != null)
-        shortcutDatas = (ShortcutOptions)componentOptions;
+        shortcutOptions = (ShortcutOptions)componentOptions;
       
       Refresh();
     }
 
     public void Refresh()
     {
-      Children.Clear();
-
-      shortcutDatas.Data.ForEach(x => Children.Add(new ShortcutControl(x)));
+      MainContent.Children.Clear();
+      MainContent.Orientation = ControlsUtils.GetOrientationBasedOnConfig();
+      shortcutOptions.Data.ForEach(x => MainContent.Children.Add(new ShortcutControl(x)));
     }
   }
 }

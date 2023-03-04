@@ -23,7 +23,8 @@ namespace lch_taskbar_wpf.Windows.Settings
     public void SetComponentInformation(Component component)
     {
       ComponentList_ComboBox.SelectedItem = component.Name;
-      currentOptions = component.Options;
+      if (component.Options  != null)
+        currentOptions = component.Options;
     }
 
     private void MoveUp_Click(object sender, RoutedEventArgs e)
@@ -51,10 +52,13 @@ namespace lch_taskbar_wpf.Windows.Settings
       if (currentSelection is not null)
       {
         var options = ComponentFactory.GetOptionsByComponentName()[currentSelection];
-        if (options != null)
-          EditButton.IsEnabled = true;
-        else
+        if (options == null)
+        {
           EditButton.IsEnabled = false;
+          return;
+        }
+
+        EditButton.IsEnabled = true;
         currentOptions = options;
       }
     }

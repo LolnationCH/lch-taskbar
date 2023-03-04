@@ -25,8 +25,10 @@ namespace lch_taskbar.TaskbarComponents
 
     public void Refresh()
     {
-      var hasPairedDevices = new BluetoothClient().PairedDevices.Any();
-      var BluetoothLogo = hasPairedDevices ? "BluetoothOn" : "BluetoothOff";
+      // TODO : Make something to refresh the bluetooth status
+      // var hasPairedDevices = new BluetoothClient().PairedDevices.Any();
+      // var BluetoothLogo = hasPairedDevices ? "BluetoothOn" : "BluetoothOff";
+      var BluetoothLogo = "BluetoothOn";
       BluetoothIcon.Source = new BitmapImage(new Uri($"/Ressources/{BluetoothLogo}.png", UriKind.Relative));
     }
   }

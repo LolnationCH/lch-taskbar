@@ -11,18 +11,28 @@ namespace lch_taskbar
     public void SetupComponents()
     {
       RemoveAllComponents();
-      Configuration.GetInstance().GetData.ComponentList.GetLeftComponents().ForEach(x => AddComponent(x, leftSP));
-      Configuration.GetInstance().GetData.ComponentList.GetMiddleComponents().ForEach(x => AddComponent(x, middleSP));
-      Configuration.GetInstance().GetData.ComponentList.GetRightComponents().ForEach(x => AddComponent(x, rightSP));
+      if (Configuration.GetInstance().GetData.Position == TaskbarPosition.Top ||
+          Configuration.GetInstance().GetData.Position == TaskbarPosition.Bottom)
+      {
+        Configuration.GetInstance().GetData.ComponentList.GetLeftComponents().ForEach(x => AddComponent(x, leftSP));
+        Configuration.GetInstance().GetData.ComponentList.GetMiddleComponents().ForEach(x => AddComponent(x, middleSP));
+        Configuration.GetInstance().GetData.ComponentList.GetRightComponents().ForEach(x => AddComponent(x, rightSP));
+      }
+      else
+      {
+        Configuration.GetInstance().GetData.ComponentList.GetLeftComponents().ForEach(x => AddComponent(x, topSP));
+        Configuration.GetInstance().GetData.ComponentList.GetMiddleComponents().ForEach(x => AddComponent(x, centerSP));
+        Configuration.GetInstance().GetData.ComponentList.GetRightComponents().ForEach(x => AddComponent(x, bottomSP));
+      }
     }
     public void SetCurrentProcessTitle(string title)
     {
       Dispatcher.Invoke(() =>
       {
-        var control = WindowUtils.FindVisualChilds<ConfiguredLabel>(this).Where(x => x.Name == "MiddleContent").FirstOrDefault();
+        var control = WindowUtils.FindVisualChilds<ConfiguredTextBlock>(this).Where(x => x.Name == "MiddleContent").FirstOrDefault();
         if (control == null)
           return;
-        control.Content = title;
+        control.Text = title;
       });
     }
 
@@ -31,6 +41,10 @@ namespace lch_taskbar
       leftSP.Children.Clear();
       middleSP.Children.Clear();
       rightSP.Children.Clear();
+
+      topSP.Children.Clear();
+      centerSP.Children.Clear();
+      bottomSP.Children.Clear();
     }
 
     private static void AddComponent(Component element, StackPanel stackPanel)
@@ -47,44 +61,18 @@ namespace lch_taskbar
       // Modify this snippet from lch-taskbar\TaskbarComponents\ComponentsDictionary.cs:
       return name?.ToLower() switch
       {
-        "bluetooth" => new BluetoothControl()
-        {
-          Margin = new Thickness(-5, 0, -3, 2)
-        },
-        "network" => new NetworkControl()
-        {
-          Margin = new Thickness(0, -1, 0, 0)
-        },
-        "process" or "processes" => new ProcessControl()
-        {
-          Name = "ProcessControl",
-          Margin = new Thickness(0, -3, 0, 0)
-        },
-        "volume" or "sound" => new SoundControl()
-        {
-          Margin = new Thickness(0, -5, 0, -2)
-        },
-        "shortcuts" => new ShortcutsControl(options)
-        {
-          Margin = new Thickness(0, -2, 0, 0)
-        },
-        "spotify" => new SpotifyControl()
-        {
-          Margin = new Thickness(0, -2, 5, 0)
-        },
-        "time" or "date" => new TimeControl()
-        {
-          Margin = new Thickness(0, -3, 0, 0)
-        },
-        "weather" => new WeatherControl(options)
-        {
-          Margin = new Thickness(0, -3, 0, 0)
-        },
-        "title" => new ConfiguredLabel()
+        "bluetooth" => new BluetoothControl(),
+        "network" => new NetworkControl(),
+        "process" or "processes" => new ProcessControl(),
+        "volume" or "sound" => new SoundControl(options),
+        "shortcuts" => new ShortcutsControl(options),
+        "spotify" => new SpotifyControl(),
+        "time" or "date" => new TimeControl(options!),
+        "weather" => new WeatherControl(options!),
+        "title" => new ConfiguredTextBlock()
         {
           Name = "MiddleContent",
-          Content = "Initializing...",
-          Margin = new Thickness(0, -1, 0, 0),
+          Text = "Initializing...",
           HorizontalAlignment = System.Windows.HorizontalAlignment.Center,
           VerticalAlignment = System.Windows.VerticalAlignment.Center,
         },
