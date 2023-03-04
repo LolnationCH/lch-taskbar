@@ -1,4 +1,5 @@
 ﻿using lch_configuration.ComponentOptions;
+using lch_taskbar_wpf.Utils;
 using System.Windows.Controls;
 
 namespace lch_taskbar.TaskbarComponents
@@ -19,6 +20,7 @@ namespace lch_taskbar.TaskbarComponents
     public void Refresh()
     {
       MainContent.Children.Clear();
+      MainContent.Orientation = ControlsUtils.GetOrientationBasedOnConfig();
       shortcutOptions.Data.ForEach(x => MainContent.Children.Add(new ShortcutControl(x)));
     }
   }

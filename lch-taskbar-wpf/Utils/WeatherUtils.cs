@@ -11,7 +11,7 @@ public static class WeatherUtils
     var response = client.GetAsync(url).Result;
     if (response.IsSuccessStatusCode)
     {
-      var content = response.Content.ReadAsStringAsync().Result.Replace("\"","");
+      var content = response.Content.ReadAsStringAsync().Result.Replace("\"","").Replace("\n", "");
       return content;
     }
     return $"Error getting weather for {location}";

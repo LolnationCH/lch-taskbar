@@ -1,5 +1,6 @@
 ﻿using lch_taskbar.Utils;
 using lch_taskbar_wpf.TaskbarComponents;
+using lch_taskbar_wpf.Utils;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,9 +16,10 @@ namespace lch_taskbar.TaskbarComponents
       InitializeComponent();
       Refresh();
     }
-
+    
     public void Refresh()
     {
+      Orientation = ControlsUtils.GetOrientationBasedOnConfig();
       var process = ProcessUtils.GetAllUniqueProcessInformation().OrderBy(x => x.ProcessName);
       var processButtons = process.Select(x => new ProcessButton(x));
       Dispatcher.Invoke(() =>
