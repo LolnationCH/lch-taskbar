@@ -22,11 +22,12 @@ namespace lch_taskbar.TaskbarComponents
 
     private void SetSpotifyControl()
     {
-      var title = SpotifyUtils.GetSpotifyTitle();
+      var title = SpotifyUtils.GetSpotifyTitle(options.TextFormat, options.MaxArtistLength, options.MaxTitleLength);
       Dispatcher.Invoke(() =>
       {
         Spotify.Text = title;
         Spotify.ToolTip = title;
+        SpotifyIcon.Visibility = options.ShowIcon ? Visibility.Visible : Visibility.Collapsed;
       });
     }
 
