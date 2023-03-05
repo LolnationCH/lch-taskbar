@@ -4,16 +4,17 @@ using System.Windows;
 namespace lch_taskbar.TaskbarComponents
 {
   public partial class TimeControl : System.Windows.Controls.Button, ICustomButton
-    {
+  {
     private bool showTime = true;
     private TimeOptions options = new();
 
-    public TimeControl(IComponentOptions timeOptions)
+    public TimeControl(IComponentOptions? Options)
     {
-      if (timeOptions != null)
-        options = (TimeOptions)timeOptions;
+      if (Options is TimeOptions timeOptions)
+        this.options = timeOptions;
+
       showTime = options.Display == TimeDisplay.Time;
-      
+
       InitializeComponent();
       Refresh();
       Click += CustomButton_Click;

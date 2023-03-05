@@ -2,13 +2,19 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Threading;
+using lch_configuration.ComponentOptions;
 
 namespace lch_taskbar.TaskbarComponents
 {
   public partial class SpotifyControl : System.Windows.Controls.Button, ICustomButton
+  {
+    SpotifyOptions options = new();
+
+    public SpotifyControl(IComponentOptions? Options)
     {
-    public SpotifyControl()
-    {
+      if (Options is SpotifyOptions spotifyOptions)
+        options = spotifyOptions;
+
       InitializeComponent();
       Refresh();
       Click += CustomButton_Click;
@@ -16,11 +22,12 @@ namespace lch_taskbar.TaskbarComponents
 
     private void SetSpotifyControl()
     {
-      var title = SpotifyUtils.GetSpotifyTitle();
+      var title = SpotifyUtils.GetSpotifyTitle(options.TextFormat, options.MaxArtistLength, options.MaxTitleLength);
       Dispatcher.Invoke(() =>
       {
         Spotify.Text = title;
         Spotify.ToolTip = title;
+        SpotifyIcon.Visibility = options.ShowIcon ? Visibility.Visible : Visibility.Collapsed;
       });
     }
 

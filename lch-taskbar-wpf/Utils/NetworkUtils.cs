@@ -119,4 +119,9 @@ public static class NetworkUtils
 
     return string.Join(" ", connectedInterface.Skip(3));
   }
+
+  public static string GetNetworkInformationFormated(WifiConnection wifiConnection, string format)
+  {
+    return format.Replace("{name}", wifiConnection.SSID).Replace("{strength}", wifiConnection.Signal);    
+  }
 }

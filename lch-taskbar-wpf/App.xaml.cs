@@ -40,10 +40,9 @@ namespace lch_taskbar
           if (processId == currentProcess.Id)
             return;
 
-          using Process process = Process.GetProcessById(processId);
           Dispatcher.Invoke(() =>
           {
-            (Current.MainWindow as LCHTaskbar)!.Refresh(process.MainWindowTitle);
+            (Current.MainWindow as LCHTaskbar)!.Refresh(processId);
           });
         }
         catch (Exception)

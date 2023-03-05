@@ -8,7 +8,7 @@ using System.Windows.Controls;
 namespace lch_taskbar
 {
   public partial class LCHTaskbar
-  {    
+  {
     public void SetupComponents()
     {
       RemoveAllComponents();
@@ -26,14 +26,16 @@ namespace lch_taskbar
         Configuration.GetInstance().GetData.ComponentList.GetRightComponents().ForEach(x => AddComponent(x, bottomSP));
       }
     }
-    public void SetCurrentProcessTitle(string title)
+    public void SetCurrentProcessTitle(int processId)
     {
+      // TODO : Re implement this as a component
+      using System.Diagnostics.Process process = System.Diagnostics.Process.GetProcessById(processId);
       Dispatcher.Invoke(() =>
       {
-        var control = WindowUtils.FindVisualChilds<ConfiguredTextBlock>(this).Where(x => x.Name == "MiddleContent").FirstOrDefault();
+        var control = WindowUtils.FindVisualChilds<ConfiguredTextBlock>(this).Where(x => x.Name == "processTitle").FirstOrDefault();
         if (control == null)
           return;
-        control.Text = title;
+        control.Text = process.MainWindowTitle;
       });
     }
 
@@ -53,7 +55,7 @@ namespace lch_taskbar
       var uIElement = GetComponentsByName(element.Name, element.Options);
       if (uIElement == null)
         return;
-      
+
       stackPanel.Children.Add(uIElement);
     }
 
@@ -64,16 +66,16 @@ namespace lch_taskbar
       {
         "input" => new InputControl(options),
         "bluetooth" => new BluetoothControl(),
-        "network" => new NetworkControl(),
-        "process" or "processes" => new ProcessControl(),
+        "network" => new NetworkControl(options),
+        "process" or "processes" => new ProcessControl(options),
         "volume" or "sound" => new SoundControl(options),
         "shortcuts" => new ShortcutsControl(options),
-        "spotify" => new SpotifyControl(),
-        "time" or "date" => new TimeControl(options!),
-        "weather" => new WeatherControl(options!),
+        "spotify" => new SpotifyControl(options),
+        "time" or "date" => new TimeControl(options),
+        "weather" => new WeatherControl(options),
         "title" => new ConfiguredTextBlock()
         {
-          Name = "MiddleContent",
+          Name = "processTitle",
           Text = "Initializing...",
           HorizontalAlignment = System.Windows.HorizontalAlignment.Center,
           VerticalAlignment = System.Windows.VerticalAlignment.Center,

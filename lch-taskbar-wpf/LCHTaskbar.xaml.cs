@@ -7,6 +7,7 @@ using lch_taskbar.TaskbarComponents;
 using System.Windows;
 using lch_configuration.Configuration;
 using System.Windows.Controls;
+using System.Diagnostics;
 
 namespace lch_taskbar
 {
@@ -73,7 +74,7 @@ namespace lch_taskbar
       return (lch_configuration.Configuration.Configuration.GetInstance().GetData.BackgroundColor,
               Double.Parse(lch_configuration.Configuration.Configuration.GetInstance().GetData.Opacity));
     }
-    
+
     private void SetupTaskbarStyle()
     {
       try
@@ -162,11 +163,11 @@ namespace lch_taskbar
     {
       return WindowUtils.FindVisualChilds<ProcessControl>(this).ToList();
     }
-    
-    public void Refresh(string title)
+
+    public void Refresh(int processId)
     {
       GetProcessControls().ForEach(x => x.Refresh());
-      SetCurrentProcessTitle(title);
+      SetCurrentProcessTitle(processId);
     }
 
     private void Toggle()
@@ -186,7 +187,7 @@ namespace lch_taskbar
     private void Reload()
     {
       lch_configuration.Configuration.Configuration.GetInstance().Reload();
-      
+
       Setup();
       WindowUtils.FindVisualChilds<ConfiguredTextBlock>(this).ToList().ForEach(x => x.Refresh());
       WindowUtils.FindVisualChilds<WeatherControl>(this).ToList().ForEach(x => x.Refresh());

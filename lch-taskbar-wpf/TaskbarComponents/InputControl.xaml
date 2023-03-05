@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:lch_taskbar_wpf.TaskbarComponents"
              mc:Ignorable="d" 
              HorizontalAlignment="Stretch"
+             Orientation="Horizontal"
              MinWidth="120"
              d:DesignHeight="450" d:DesignWidth="800">
 </StackPanel>
