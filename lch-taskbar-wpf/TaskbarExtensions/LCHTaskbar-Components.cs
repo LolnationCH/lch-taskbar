@@ -1,6 +1,7 @@
 ﻿using lch_configuration.ComponentOptions;
 using lch_configuration.Configuration;
 using lch_taskbar.TaskbarComponents;
+using lch_taskbar_wpf.TaskbarComponents;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -61,6 +62,7 @@ namespace lch_taskbar
       // Modify this snippet from lch-taskbar\TaskbarComponents\ComponentsDictionary.cs:
       return name?.ToLower() switch
       {
+        "input" => new InputControl(options),
         "bluetooth" => new BluetoothControl(),
         "network" => new NetworkControl(),
         "process" or "processes" => new ProcessControl(),

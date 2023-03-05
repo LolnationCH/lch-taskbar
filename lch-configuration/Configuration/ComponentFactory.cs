@@ -6,14 +6,15 @@ namespace lch_configuration.Configuration
   {
     static readonly Dictionary<string, IComponentOptions?>  optionsByComponentName = new()
       {
-        {"bluetooth", null},
-        {"network", null},
-        {"process", null},
-        {"processes", null},
-        {"volume", new SoundOptions()},
-        {"sound", new SoundOptions()},
-        {"shortcuts" , new ShortcutOptions()},
-        {"spotify", null},
+        { "input", new InputOptions()},
+        { "bluetooth", null},
+        { "network", null},
+        { "process", null},
+        { "processes", null},
+        { "volume", new SoundOptions()},
+        { "sound", new SoundOptions()},
+        { "shortcuts" , new ShortcutOptions()},
+        { "spotify", null},
         { "time", new TimeOptions()},
         { "date", new TimeOptions()},
         { "weather", new WeatherOptions()},
