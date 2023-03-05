@@ -6,14 +6,14 @@ namespace lch_taskbar.TaskbarComponents
 {
   public partial class ShortcutsControl : Border
   {
-    private readonly ShortcutOptions shortcutOptions = new();
-    public ShortcutsControl(IComponentOptions? componentOptions)
+    private readonly ShortcutOptions options = new();
+    public ShortcutsControl(IComponentOptions? Options)
     {
       InitializeComponent();
-      
-      if (componentOptions != null)
-        shortcutOptions = (ShortcutOptions)componentOptions;
-      
+
+      if (Options is ShortcutOptions shortcutOptions)
+        options = shortcutOptions;
+
       Refresh();
     }
 
@@ -21,7 +21,7 @@ namespace lch_taskbar.TaskbarComponents
     {
       MainContent.Children.Clear();
       MainContent.Orientation = ControlsUtils.GetOrientationBasedOnConfig();
-      shortcutOptions.Data.ForEach(x => MainContent.Children.Add(new ShortcutControl(x)));
+      options.Data.ForEach(x => MainContent.Children.Add(new ShortcutControl(x)));
     }
   }
 }

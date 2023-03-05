@@ -1,4 +1,5 @@
-﻿using lch_taskbar.Utils;
+﻿using lch_configuration.ComponentOptions;
+using lch_taskbar.Utils;
 using lch_taskbar_wpf.TaskbarComponents;
 using lch_taskbar_wpf.Utils;
 using System.Diagnostics;
@@ -11,12 +12,16 @@ namespace lch_taskbar.TaskbarComponents
 {
   public partial class ProcessControl : StackPanel
   {
-    public ProcessControl()
+    ProcessOptions options = new();
+    public ProcessControl(IComponentOptions? Options)
     {
+      if (Options is ProcessOptions processOptions)
+        options = processOptions;
+
       InitializeComponent();
       Refresh();
     }
-    
+
     public void Refresh()
     {
       Orientation = ControlsUtils.GetOrientationBasedOnConfig();

@@ -2,13 +2,19 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Threading;
+using lch_configuration.ComponentOptions;
 
 namespace lch_taskbar.TaskbarComponents
 {
   public partial class SpotifyControl : System.Windows.Controls.Button, ICustomButton
+  {
+    SpotifyOptions options = new();
+
+    public SpotifyControl(IComponentOptions? Options)
     {
-    public SpotifyControl()
-    {
+      if (Options is SpotifyOptions spotifyOptions)
+        options = spotifyOptions;
+
       InitializeComponent();
       Refresh();
       Click += CustomButton_Click;

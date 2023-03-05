@@ -5,11 +5,13 @@ using System.Windows.Threading;
 namespace lch_taskbar.TaskbarComponents
 {
   public partial class WeatherControl : System.Windows.Controls.Button
+  {
+    private readonly WeatherOptions options = new();
+    public WeatherControl(IComponentOptions? Options)
     {
-    private readonly WeatherOptions options;
-    public WeatherControl(IComponentOptions options)
-    {;
-      this.options = (options as WeatherOptions)!;
+      if (Options is WeatherOptions weatherOptions)
+        options = weatherOptions;
+
       InitializeComponent();
       SetupWeather();
     }

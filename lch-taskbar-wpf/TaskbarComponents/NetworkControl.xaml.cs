@@ -1,15 +1,20 @@
 ﻿using System.Net.NetworkInformation;
 using System.Windows;
+using lch_configuration.ComponentOptions;
 
 namespace lch_taskbar.TaskbarComponents
 {
   public partial class NetworkControl : System.Windows.Controls.Button, ICustomButton
   {
-    public NetworkControl()
+    NetworkOptions options = new();
+    public NetworkControl(IComponentOptions? Options)
     {
+      if (Options is NetworkOptions networkOptions)
+        options = networkOptions;
+
       InitializeComponent();
       Setup();
-      
+
       Click += CustomButton_Click;
     }
 
@@ -18,7 +23,7 @@ namespace lch_taskbar.TaskbarComponents
       var interfaceName = NetworkUtils.GetConnectedInterfaceName();
       if (interfaceName == null)
         return;
-      
+
       if (interfaceName == "Wi-Fi")
       {
         var WIFIConnections = NetworkUtils.GetWifiConnections();
@@ -40,7 +45,7 @@ namespace lch_taskbar.TaskbarComponents
 
       internetLabel.Text = interfaceName;
       internetIcon.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Ressources/ethernet.png", UriKind.Relative));
-      
+
     }
     public void CustomButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {
@@ -53,5 +58,5 @@ namespace lch_taskbar.TaskbarComponents
     public void Refresh()
     {
     }
-  }    
+  }
 }

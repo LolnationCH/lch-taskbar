@@ -4,24 +4,24 @@ namespace lch_configuration.Configuration
 {
   public static class ComponentFactory
   {
-    static readonly Dictionary<string, IComponentOptions?>  optionsByComponentName = new()
+    static readonly Dictionary<string, IComponentOptions?> optionsByComponentName = new()
       {
         { "input", new InputOptions()},
         { "bluetooth", null},
-        { "network", null},
-        { "process", null},
-        { "processes", null},
+        { "network", new NetworkOptions()},
+        { "process", new ProcessOptions()},
+        { "processes", new ProcessOptions()},
         { "volume", new SoundOptions()},
         { "sound", new SoundOptions()},
         { "shortcuts" , new ShortcutOptions()},
-        { "spotify", null},
+        { "spotify", new SpotifyOptions()},
         { "time", new TimeOptions()},
         { "date", new TimeOptions()},
         { "weather", new WeatherOptions()},
-        { "title", null},
+        { "title", new TitleOptions()},
       };
-    
-  public static Dictionary<string, IComponentOptions?> GetOptionsByComponentName()
+
+    public static Dictionary<string, IComponentOptions?> GetOptionsByComponentName()
     {
       return optionsByComponentName;
     }
@@ -30,10 +30,10 @@ namespace lch_configuration.Configuration
     {
       if (name == null)
         return null;
-      
+
       if (optionsByComponentName.ContainsKey(name))
         return new Component() { Name = name, Options = optionsByComponentName[name] };
-      
+
       return null;
     }
 
