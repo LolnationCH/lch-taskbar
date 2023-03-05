@@ -3,6 +3,6 @@
   public class NetworkOptions : IComponentOptions
   {
     public bool ShowIcon { get; set; } = true;
-    public string TextFormat { get; set; } = "{device} - {ip} ({strength})";
+    public string TextFormat { get; set; } = "{name} ({strength})";
   }
 }
