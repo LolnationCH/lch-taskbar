@@ -1,5 +1,4 @@
 ﻿using lch_configuration.ComponentOptions;
-using lch_taskbar.TaskbarComponents;
 using lch_taskbar_wpf.Utils;
 using System.Windows.Controls;
 
@@ -14,7 +13,6 @@ namespace lch_taskbar_wpf.TaskbarComponents
         options = inputOptions;
 
       InitializeComponent();
-      Orientation = ControlsUtils.GetOrientationBasedOnConfig();
       SetupControlBasedOnOptions();
     }
 
