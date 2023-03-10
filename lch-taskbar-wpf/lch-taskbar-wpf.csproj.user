@@ -8,6 +8,9 @@
     <Compile Update="TaskbarComponents\BluetoothControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="TaskbarComponents\CurrentProcessTitleControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TaskbarComponents\InputControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -65,6 +68,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\BluetoothControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaskbarComponents\CurrentProcessTitleControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TaskbarComponents\InputControl.xaml">
