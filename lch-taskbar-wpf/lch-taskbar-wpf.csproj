@@ -10,6 +10,7 @@
     <ApplicationIcon>Ressources\app_icon.ico</ApplicationIcon>
     <PackageIcon>app_icon.png</PackageIcon>
     <Version>1.0.0</Version>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 
   <ItemGroup>
