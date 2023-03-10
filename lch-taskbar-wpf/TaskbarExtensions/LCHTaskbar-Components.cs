@@ -28,14 +28,12 @@ namespace lch_taskbar
     }
     public void SetCurrentProcessTitle(int processId)
     {
-      // TODO : Re implement this as a component
       using System.Diagnostics.Process process = System.Diagnostics.Process.GetProcessById(processId);
       Dispatcher.Invoke(() =>
       {
-        var control = WindowUtils.FindVisualChilds<ConfiguredTextBlock>(this).Where(x => x.Name == "processTitle").FirstOrDefault();
-        if (control == null)
-          return;
-        control.Text = process.MainWindowTitle;
+        var controls = WindowUtils.FindVisualChilds<CurrentProcessTitleControl>(this);
+        foreach (var control in controls)
+          control.Refresh(process);
       });
     }
 
@@ -61,7 +59,7 @@ namespace lch_taskbar
 
     private static UIElement? GetComponentsByName(string? name, IComponentOptions? options)
     {
-      // Modify this snippet from lch-taskbar\TaskbarComponents\ComponentsDictionary.cs:
+      // Also modify the ComponentFactory
       return name?.ToLower() switch
       {
         "input" => new InputControl(options),
@@ -73,13 +71,7 @@ namespace lch_taskbar
         "spotify" => new SpotifyControl(options),
         "time" or "date" => new TimeControl(options),
         "weather" => new WeatherControl(options),
-        "title" => new ConfiguredTextBlock()
-        {
-          Name = "processTitle",
-          Text = "Initializing...",
-          HorizontalAlignment = System.Windows.HorizontalAlignment.Center,
-          VerticalAlignment = System.Windows.VerticalAlignment.Center,
-        },
+        "title" => new CurrentProcessTitleControl(options),
         _ => null,
       };
     }
