@@ -25,7 +25,8 @@ namespace lch_taskbar.TaskbarComponents
     public void Refresh()
     {
       Orientation = ControlsUtils.GetOrientationBasedOnConfig();
-      var process = ProcessUtils.GetAllUniqueProcessInformation().OrderBy(x => x.ProcessName);
+      var process = ProcessUtils.GetAllUniqueProcessInformation().OrderBy(x => x.ProcessName)
+                                .Where(x => !options.ProcessNamesExcluded.ContainsProcess(x.ProcessName, ProcessUtils.GetProcessFileName(x.ProcessHwnd)));
       var processButtons = process.Select(x => new ProcessButton(x, options.ControlFormat));
       Dispatcher.Invoke(() =>
       {

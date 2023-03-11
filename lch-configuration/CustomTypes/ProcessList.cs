@@ -23,6 +23,8 @@ namespace lch_configuration.CustomTypes
 
     public void RemoveAllEmpty() { ProcessNamesExcluded.RemoveAll(x => x.Name == null); }
 
+    public bool ContainsProcess(string processName, string? path) { return ProcessNamesExcluded.Any(x => x.Name == processName || x.Path == path); }
+
     public IEnumerator<ProcessInformation> GetEnumerator()
     {
       return ProcessNamesExcluded.GetEnumerator();
