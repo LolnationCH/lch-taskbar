@@ -51,6 +51,22 @@ namespace lch_taskbar_wpf.Windows.Settings
         checkbox.SetBinding(ToggleButton.IsCheckedProperty, new Binding(property.Name) { Source = _componentOptions });
         return checkbox;
       }
+      else if (property.PropertyType.Name == "ProcessList")
+      {
+        var button = new Button()
+        {
+          Content = "Edit",
+          Margin = new Thickness(5),
+          HorizontalAlignment = HorizontalAlignment.Stretch,
+          MinWidth = 100,
+        };
+        button.Click += (sender, e) =>
+        {
+          var processListSettings = new ProcessListSettings(_componentOptions);
+          processListSettings.ShowDialog();
+        };
+        return button;
+      }
       else
       {
         var textBox = new TextBox

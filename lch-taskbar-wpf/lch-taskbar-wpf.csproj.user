@@ -56,6 +56,12 @@
     <Compile Update="Windows\Settings\DynamicSettingsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\Settings\ProcessListSettings\ProcessLineSettings.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings\ProcessListSettings\ProcessListSettings.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\Settings\ShortcutDataLine.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -116,6 +122,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Settings\DynamicSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ProcessListSettings\ProcessLineSettings.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings\ProcessListSettings\ProcessListSettings.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Settings\ShortcutDataLine.xaml">
